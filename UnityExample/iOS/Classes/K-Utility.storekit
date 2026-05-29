@@ -1,0 +1,240 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "93A3B2F7",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "27000",
+      "familyShareable" : false,
+      "internalID" : "6749924838",
+      "localizations" : [
+        {
+          "description" : "+103 KNB",
+          "displayName" : "Gói 103 KNB",
+          "locale" : "vi"
+        },
+        {
+          "description" : "+103 KNB",
+          "displayName" : "Gói 103 KNB",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.kk.27knb",
+      "referenceName" : "Gói 103 KNB",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "1350000",
+      "familyShareable" : false,
+      "internalID" : "6751316941",
+      "localizations" : [
+        {
+          "description" : "+10577 KNB",
+          "displayName" : "Gói 10577 KNB",
+          "locale" : "vi"
+        },
+        {
+          "description" : "+10577 KNB",
+          "displayName" : "Gói 10577 KNB",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.kk.1080knb",
+      "referenceName" : "Gói 10577 KNB",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "540000",
+      "familyShareable" : false,
+      "internalID" : "6751317192",
+      "localizations" : [
+        {
+          "description" : "+1679 KNB",
+          "displayName" : "Gói 1679 KNB",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "+1679 KNB",
+          "displayName" : "Gói 1679 KNB",
+          "locale" : "vi"
+        }
+      ],
+      "productID" : "com.kk.540knb",
+      "referenceName" : "Gói 1679 KNB",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "2699000",
+      "familyShareable" : false,
+      "internalID" : "6751317192",
+      "localizations" : [
+        {
+          "description" : "+17878 KNB",
+          "displayName" : "Gói 17878 KNB",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "+17878 KNB",
+          "displayName" : "Gói 17878 KNB",
+          "locale" : "vi"
+        }
+      ],
+      "productID" : "com.kk.2700knb",
+      "referenceName" : "Gói 17878 KNB",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "2699000",
+      "familyShareable" : false,
+      "internalID" : "6751317192",
+      "localizations" : [
+        {
+          "description" : "+17878 KNB",
+          "displayName" : "Gói 17878 KNB",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "+17878 KNB",
+          "displayName" : "Gói 17878 KNB",
+          "locale" : "vi"
+        }
+      ],
+      "productID" : "com.kk.2700knb",
+      "referenceName" : "Gói 17878 KNB",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "810000",
+      "familyShareable" : false,
+      "internalID" : "6751317192",
+      "localizations" : [
+        {
+          "description" : "+3378 KNB",
+          "displayName" : "Gói 3378 KNB",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "+3378 KNB",
+          "displayName" : "Gói 3378 KNB",
+          "locale" : "vi"
+        }
+      ],
+      "productID" : "com.kk.810knb",
+      "referenceName" : "Gói 3378 KNB",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "135000",
+      "familyShareable" : false,
+      "internalID" : "6751317192",
+      "localizations" : [
+        {
+          "description" : "+479 KNB",
+          "displayName" : "Gói 479 KNB",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "+479 KNB",
+          "displayName" : "Gói 479 KNB",
+          "locale" : "vi"
+        }
+      ],
+      "productID" : "com.kk.135knb",
+      "referenceName" : "Gói 479 KNB",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "135000",
+      "familyShareable" : false,
+      "internalID" : "6751317192",
+      "localizations" : [
+        {
+          "description" : "+979 KNB",
+          "displayName" : "Gói 979 KNB",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "+979 KNB",
+          "displayName" : "Gói 979 KNB",
+          "locale" : "vi"
+        }
+      ],
+      "productID" : "com.kk.270knb",
+      "referenceName" : "Gói 979 KNB",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6744461374",
+    "_developerTeamID" : "8UWCQNTDWA",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 777454134.83831596,
+    "_locale" : "vi",
+    "_storefront" : "VNM",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "93A3B2F7",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "5000",
+      "familyShareable" : false,
+      "internalID" : "6749924838",
+      "localizations" : [
+        {
+          "description" : "105",
+          "displayName" : "+105 điểm nuốt chửng.",
+          "locale" : "vi"
+        },
+        {
+          "description" : "105",
+          "displayName" : "+105 điểm nuốt chửng.",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.kk.5k",
+      "referenceName" : "+105 điểm nuốt chửng.",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "9000",
+      "familyShareable" : false,
+      "internalID" : "6751316941",
+      "localizations" : [
+        {
+          "description" : "450",
+          "displayName" : "+450 điểm nuốt chửng.",
+          "locale" : "vi"
+        },
+        {
+          "description" : "450",
+          "displayName" : "+450 điểm nuốt chửng.",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.kk.10k",
+      "referenceName" : "+450 điểm nuốt chửng.",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "19000",
+      "familyShareable" : false,
+      "internalID" : "6751317192",
+      "localizations" : [
+        {
+          "description" : "900",
+          "displayName" : "+900 điểm nuốt chửng.",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "900",
+          "displayName" : "+900 điểm nuốt chửng.",
+          "locale" : "vi"
+        }
+      ],
+      "productID" : "com.kk.20k",
+      "referenceName" : "+900 điểm nuốt chửng.",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6744461374",
+    "_developerTeamID" : "8UWCQNTDWA",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 777454134.83831596,
+    "_locale" : "vi",
+    "_storefront" : "VNM",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

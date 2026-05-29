@@ -1,0 +1,113 @@
+name: K-Utility
+options: 
+  bundleIdPrefix: io.dar.example 
+  deploymentTarget: 
+    iOS: "15.0"
+ 
+configs: 
+  Dev: debug 
+  Staging: debug 
+  Production: release 
+ 
+settings: 
+  base: 
+    SWIFT_VERSION: "5.9" 
+    ENABLE_PREVIEWS: true 
+    MARKETING_VERSION: 1.0.0 
+    CURRENT_PROJECT_VERSION: 7
+    OTHER_LDFLAGS: $(inherited) 
+    DEVELOPMENT_LANGUAGE: vi 
+  configs: 
+    Dev: 
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEV 
+      SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+    Staging: 
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: STAGING 
+      SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+    Production: 
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: PRODUCTION 
+
+packages: 
+  AuthSDK: 
+    path: ../AuthSDK 
+  PaymentSDK: 
+    path: ../PaymentSDK
+  Facebook: 
+    url: https://github.com/facebook/facebook-ios-sdk 
+    exactVersion: 18.0.0 
+ 
+targets: 
+  K-Utility: 
+    type: application 
+    platform: iOS 
+    # info: 
+    #   properties: 
+    #     UIRequiresFullScreen: true 
+    #     UISupportedInterfaceOrientations: 
+    #       - UIInterfaceOrientationPortrait 
+    #       - UIInterfaceOrientationPortraitUpsideDown 
+    #       - UIInterfaceOrientationLandscapeLeft 
+    #       - UIInterfaceOrientationLandscapeRight 
+        # "UISupportedInterfaceOrientations~ipad": 
+        #   - UIInterfaceOrientationPortrait 
+        #   - UIInterfaceOrientationPortraitUpsideDown 
+        #   - UIInterfaceOrientationLandscapeLeft 
+        #   - UIInterfaceOrientationLandscapeRight 
+    deploymentTarget: "15.0"
+    supportedDestinations: [iOS]
+    sources: 
+      - path: Sources 
+      - path: Assets.xcassets 
+    resources: 
+      - path: "Assets.xcassets" 
+      - path: Sources/Resources 
+        includes: 
+          - "**/*.xcstrings" 
+    dependencies: 
+      - package: AuthSDK 
+        product: AuthSDK
+      - package: PaymentSDK
+        product: PaymentSDK
+      - package: Facebook 
+        product: FacebookCore 
+      - package: Facebook 
+        product: FacebookLogin 
+    settings: 
+      INFOPLIST_FILE: Sources/SupportingFiles/Info.plist 
+      PRODUCT_BUNDLE_IDENTIFIER: io.dar.example.authsdkexample 
+      ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon 
+      TARGETED_DEVICE_FAMILY: 1 
+      base: 
+        USE_COMPILER_EXTRACT_SWIFT_STRINGS: YES 
+        ENABLE_IN_APP_PURCHASE: YES 
+#  AuthSDKExampleTests:
+#    type: bundle.unit-test        # ← unit test bundle
+#    platform: iOS
+#    deploymentTarget: "15.0"
+#    sources:
+#      - path: Tests             # ← put your XCTestCase files here
+#    dependencies:
+#      - target: AuthSDKExample  # ← link against your app
+#    settings:
+#      INFOPLIST_FILE: Tests/Info.plist
+#      PRODUCT_BUNDLE_IDENTIFIER: com.dar.example.authsdkexample.tests  
+ 
+schemes: 
+  K-Utility-Dev: 
+    build: 
+      targets: 
+        K-Utility: all 
+    run: 
+      config: Dev 
+  K-Utility-Staging: 
+    build: 
+      targets: 
+        K-Utility: all 
+    run: 
+      config: Staging 
+  K-Utility-Production: 
+    build: 
+      targets: 
+        K-Utility: all 
+    run: 
+      config: Production

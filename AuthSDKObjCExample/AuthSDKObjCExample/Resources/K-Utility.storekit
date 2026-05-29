@@ -1,0 +1,160 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "93A3B2F7",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "6745541225",
+      "localizations" : [
+        {
+          "description" : "Gói Nạp 10,000 VNĐ for 300 Kim Nguyên Bảo",
+          "displayName" : "Gói Nạp 10,000 VNĐ",
+          "locale" : "vi"
+        },
+        {
+          "description" : "VND 10,000 Package for 300 Kim Nguyen Bao",
+          "displayName" : "VND 10,000 Package",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.kk.10k",
+      "referenceName" : "VND 10,000 Top-up Package",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "6745541470",
+      "localizations" : [
+        {
+          "description" : "Gói Nạp 20,000 VNĐ cho 600 Kim Nguyên Bảo",
+          "displayName" : "Gói Nạp 20,000 VNĐ",
+          "locale" : "vi"
+        },
+        {
+          "description" : "VND 20,000 Package for 600 Kim Nguyen Bao",
+          "displayName" : "VND 20,000 Package",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.kk.20k",
+      "referenceName" : "VND 20,000 Top-up Package",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "6745540414",
+      "localizations" : [
+        {
+          "description" : "Gói Nạp 5,000 VNĐ cho 60 Kim Nguyên Bảo",
+          "displayName" : "Gói Nạp 5,000 VNĐ",
+          "locale" : "vi"
+        },
+        {
+          "description" : "VND 5,000 Package for 60 Kim Nguyen Bao",
+          "displayName" : "VND 5,000 Package",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.kk.5k",
+      "referenceName" : "VND 5,000 Top-up Package",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "6746784683",
+      "localizations" : [
+        {
+          "description" : "Gói Nạp 50,000 VNĐ cho 1000 Kim Nguyên Bảo",
+          "displayName" : "Gói Nạp 50,000 VNĐ",
+          "locale" : "vi"
+        },
+        {
+          "description" : "VND 50,000 Package for 1000 Kim Nguyen Bao",
+          "displayName" : "VND 50,000 Package",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.kk.50k",
+      "referenceName" : "VND 50,000 Top-up Package",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6744461374",
+    "_developerTeamID" : "8UWCQNTDWA",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 770899334.20650899,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}
