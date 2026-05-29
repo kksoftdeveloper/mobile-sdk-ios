@@ -60,3 +60,58 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
+
+# Xcode
+.DS_Store
+*.xcuserstate
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+xcuserdata/
+
+# Build
+build/
+DerivedData/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+Packages/
+Package.resolved
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/
+fastlane/test_output/
+
+# Firebase / Google
+GoogleService-Info.plist
+google-services.json
+
+# Logs
+*.log
+
+# Temporary files
+*.swp
+*.tmp
+*.temp
+
+# macOS
+.DS_Store
+
+# Archives
+*.xcarchive
+
+# AppCode / JetBrains
+.idea/
+
+# Test results
+test-output/
