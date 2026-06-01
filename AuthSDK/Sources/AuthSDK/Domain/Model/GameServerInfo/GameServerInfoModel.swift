@@ -9,12 +9,13 @@ struct GameServerInfoModel {
     let serverId: Int
     let serverName: String
     let serverClientId: String?
+    let serverClientName: String?
     let status: GameServerStatus
 }
 
 extension GameServerInfoModel {
     func toResponse() -> GameServerInfoResponse {
-        return GameServerInfoResponse(serverId: serverId, serverName: serverName, serverClientId: serverClientId, serverStatus: status.toResponse())
+        return GameServerInfoResponse(serverId: serverId, serverName: serverName, serverClientId: serverClientId, serverClientName: serverClientName, serverStatus: status.toResponse())
     }
 }
 

@@ -56,6 +56,12 @@ public final class TrackingServiceProvider {
         var adjustAppToken: String?
         var enableAdjust: Bool = false
         
+        // TikTok configuration
+        var tiktokAccessToken: String?
+        var tiktokAppID: String?
+        var tiktokBusinessAppID: String?
+        var enableTikTok: Bool = false
+        
         public init() {}
         
         // MARK: - AppFlyers Configuration
@@ -103,6 +109,21 @@ public final class TrackingServiceProvider {
             return self
         }
         
+        // MARK: - TikTok Configuration
+        
+        /// Enable and configure TikTok App Events SDK.
+        /// - Parameters:
+        ///   - accessToken: TikTok access token from Events Manager.
+        ///   - appID: iOS app identifier registered with TikTok.
+        ///   - tiktokAppID: TikTok application identifier.
+        public func enableTikTok(accessToken: String, appID: String, tiktokAppID: String) -> Builder {
+            self.tiktokAccessToken = accessToken
+            self.tiktokAppID = appID
+            self.tiktokBusinessAppID = tiktokAppID
+            self.enableTikTok = true
+            return self
+        }
+        
         // MARK: - Custom Providers
         
         /// Add a custom tracking provider
@@ -144,6 +165,19 @@ public final class TrackingServiceProvider {
             if enableAdjust, let appID = adjustAppID, let appToken = adjustAppToken {
                 let adjustProvider = AdjustTrackingProvider(appID: appID, devKey: appToken)
                 trackingProviders.append(adjustProvider)
+            }
+            
+            // Create TikTok provider if enabled
+            if enableTikTok,
+               let accessToken = tiktokAccessToken,
+               let appID = tiktokAppID,
+               let tiktokAppID = tiktokBusinessAppID {
+                let tiktokProvider = TikTokTrackingProvider(
+                    accessToken: accessToken,
+                    appID: appID,
+                    tiktokAppID: tiktokAppID
+                )
+                trackingProviders.append(tiktokProvider)
             }
             
             return TrackingServiceProvider(builder: self)

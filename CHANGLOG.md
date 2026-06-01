@@ -1,5 +1,10 @@
 ## 📦 Changelog
 
+### [1.0.0] - 2026-06-01
+#### Added
+- IOne Environment Configuration – Example
+- Integrate TikTok Tracking
+
 ### [1.0.0] - 2026-05-29
 #### Added
 - Handle staging and production

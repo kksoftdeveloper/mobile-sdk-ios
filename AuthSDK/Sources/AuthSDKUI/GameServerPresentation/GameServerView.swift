@@ -170,16 +170,16 @@ final class MockGameServerViewModel: GameServerViewModel {
             
         })
         self.servers = [
-            GameServerInfoResponse(serverId: 1, serverName: "Asia Server", serverClientId: nil, serverStatus: .online),
-            GameServerInfoResponse(serverId: 2, serverName: "Asia Server", serverClientId: nil, serverStatus: .online),
-            GameServerInfoResponse(serverId: 3, serverName: "Asia Server", serverClientId: nil, serverStatus: .online),
-            GameServerInfoResponse(serverId: 4, serverName: "Asia Server", serverClientId: nil, serverStatus: .online),
-            GameServerInfoResponse(serverId: 5, serverName: "Asia Server", serverClientId: nil, serverStatus: .offline),
-            GameServerInfoResponse(serverId: 6, serverName: "Asia Server", serverClientId: nil, serverStatus: .online),
-            GameServerInfoResponse(serverId: 7, serverName: "Asia Server", serverClientId: nil, serverStatus: .offline),
-            GameServerInfoResponse(serverId: 8, serverName: "Asia Server", serverClientId: nil, serverStatus: .online)
+            GameServerInfoResponse(serverId: 1, serverName: "Asia Server", serverClientId: nil,serverClientName: nil, serverStatus: .online),
+            GameServerInfoResponse(serverId: 2, serverName: "Asia Server", serverClientId: nil,serverClientName: nil, serverStatus: .online),
+            GameServerInfoResponse(serverId: 3, serverName: "Asia Server", serverClientId: nil,serverClientName: nil, serverStatus: .online),
+            GameServerInfoResponse(serverId: 4, serverName: "Asia Server", serverClientId: nil,serverClientName: nil, serverStatus: .online),
+            GameServerInfoResponse(serverId: 5, serverName: "Asia Server", serverClientId: nil,serverClientName: nil, serverStatus: .offline),
+            GameServerInfoResponse(serverId: 6, serverName: "Asia Server", serverClientId: nil,serverClientName: nil, serverStatus: .online),
+            GameServerInfoResponse(serverId: 7, serverName: "Asia Server", serverClientId: nil,serverClientName: nil, serverStatus: .offline),
+            GameServerInfoResponse(serverId: 8, serverName: "Asia Server", serverClientId: nil,serverClientName: nil, serverStatus: .online)
         ]
-        self.selectedServer = GameServerInfoResponse(serverId: 1, serverName: "Asia Server", serverClientId: nil, serverStatus: .online)
+        self.selectedServer = GameServerInfoResponse(serverId: 1, serverName: "Asia Server", serverClientId: nil,serverClientName: nil, serverStatus: .online)
     }
 }
 

@@ -53,6 +53,8 @@ targets:
         product: FirebaseCore
       - package: AdjustSDK
         product: AdjustSdk
+      - package: TikTokBusinessSDK
+        product: TikTokBusinessSDK
     settings:
       BUILD_LIBRARY_FOR_DISTRIBUTION: YES
       SKIP_INSTALL: NO
@@ -128,3 +130,6 @@ packages:
   AdjustSDK:
     url: https://github.com/adjust/ios_sdk.git
     from: 5.5.1
+  TikTokBusinessSDK:
+    url: https://github.com/tiktok/tiktok-business-ios-sdk.git
+    from: 1.6.1

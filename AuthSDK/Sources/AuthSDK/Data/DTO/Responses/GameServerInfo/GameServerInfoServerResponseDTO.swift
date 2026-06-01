@@ -12,6 +12,7 @@ struct GameServerInfoServerResponseDTO: Decodable {
     let serverId: Int
     let serverName: String
     let serverClientId: String?
+    let serverClientName: String?
     let status: String
 }
 
@@ -30,7 +31,7 @@ extension GameServerInfoServerResponseDTO {
     
     func toModel() -> GameServerInfoModel {
         return GameServerInfoModel(
-            serverId: serverId, serverName: serverName, serverClientId: serverClientId, status: toGameServerStatus()
+            serverId: serverId, serverName: serverName, serverClientId: serverClientId, serverClientName: serverClientName, status: toGameServerStatus()
         )
     }
 }
