@@ -10,6 +10,7 @@ public struct GameServerInfoResponse: Codable, Identifiable  {
     public let serverId: Int
     public let serverName: String
     public let serverClientId: String?
+    public let serverClientName: String?
     public let serverStatus: ServerStatusResponse
     
     public var id: String { "\(serverId)" }

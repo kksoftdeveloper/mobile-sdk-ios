@@ -1,6 +1,6 @@
 # TrackingSDK
 
-A flexible, extensible tracking SDK for iOS that supports multiple tracking providers including AppFlyers, Firebase Analytics, and Firebase Crashlytics.
+A flexible, extensible tracking SDK for iOS that supports multiple tracking providers including AppFlyers, Firebase Analytics, Firebase Crashlytics, Adjust, and TikTok App Events.
 
 ## Features
 
@@ -107,11 +107,39 @@ let trackingService = TrackingServiceProvider.Builder()
     .enableAppFlyers(appID: "app-id", devKey: "dev-key")
     .enableFirebaseAnalytics(appID: "firebase-app-id")
     .enableFirebaseCrashlytics()
+    .enableTikTok(
+        accessToken: "your-tiktok-access-token",
+        appID: "your-ios-app-id",
+        tiktokAppID: "your-tiktok-app-id"
+    )
     .build()
 
 // All events will be tracked across all enabled providers
 trackingService.trackingManager.trackEvent("custom_event", parameters: nil)
 ```
+
+### TikTok App Events
+
+```swift
+let trackingService = TrackingServiceProvider.Builder()
+    .enableTikTok(
+        accessToken: "your-tiktok-access-token",
+        appID: "your-ios-app-id",
+        tiktokAppID: "your-tiktok-app-id"
+    )
+    .build()
+
+trackingService.trackingManager.initialize()
+trackingService.trackingManager.trackEvent("level_start", parameters: ["level": 1])
+trackingService.trackingManager.trackPurchase(
+    productID: "com.example.coin_pack",
+    price: 4.99,
+    currency: "USD",
+    parameters: ["source": "shop"]
+)
+```
+
+TikTok user properties are merged into future event payloads. Do not include sensitive data in TikTok event properties. `setUserID(_:)` sends the value as TikTok's external user ID.
 
 ### Custom Providers
 

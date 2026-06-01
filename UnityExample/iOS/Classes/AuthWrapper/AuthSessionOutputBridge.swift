@@ -13,14 +13,14 @@ import Foundation
     /// Works with AuthSessionOutput and any other Codable type
     @objc public static func convertCodableToDictionary(_ output: Any) -> NSDictionary? {
         // Try to encode as JSON if it's Codable
-        guard let encodable = output as? any Encodable else {
+        guard output is any Encodable else {
             return nil
         }
         
         // Use reflection to encode - but simpler: use JSONEncoder
         // Since Swift structs that are Codable can be encoded
         do {
-            let encoder = JSONEncoder()
+            _ = JSONEncoder()
             // Use reflection to encode
             let mirror = Mirror(reflecting: output)
             var dict: [String: Any] = [:]

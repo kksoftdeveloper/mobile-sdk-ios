@@ -85,7 +85,7 @@ final class DefaultInitializer : InitializeAnalytics, Initialializer, DeviceIden
                     print("SERVER: self = nil")
                     return Fail(error: AuthErrorResponse.unknownError()).eraseToAnyPublisher()
                 }
-                let (response, gameId, serverId: String) = pair
+                let (response, gameId, serverId) = pair
                 print("SERVER: pair = \(pair)")
                 return self.authAPIClient.getGameServers(gameId: gameId)
                     .tryMap { resDTO in

@@ -2,6 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>APP_ENV</key>
+	<string>$(APP_ENV)</string>
+	<key>AdjustId</key>
+	<string>$(AdjustId)</string>
+	<key>AdjustToken</key>
+	<string>$(AdjustToken)</string>
+	<key>AppFlyersDevKey</key>
+	<string>$(AppFlyersDevKey)</string>
+	<key>AppFlyersId</key>
+	<string>$(AppFlyersId)</string>
 	<key>CADisableMinimumFrameDuration</key>
 	<false/>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
@@ -11,11 +21,11 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>vi</string>
 	<key>CFBundleDisplayName</key>
-	<string>IOne</string>
+	<string>$(APP_DISPLAY_NAME)</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<string>$(APP_BUNDLE_ID)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -38,18 +48,24 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED</key>
+	<false/>
+	<key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
+	<true/>
 	<key>FacebookAppID</key>
-	<string>1161544315137705</string>
+	<string>$(FacebookAppID)</string>
 	<key>FacebookAutoLogAppEventsEnabled</key>
 	<true/>
 	<key>FacebookClientToken</key>
-	<string>6a2631357b252d0ba6818832146a59dc</string>
+	<string>$(FacebookClientToken)</string>
 	<key>FacebookDisplayName</key>
-	<string>SDKExample</string>
-	<key>GIDClientID</key>
-	<string>511211441022-p18sv5i70b87g3440kr2ld0bujg385rk.apps.googleusercontent.com</string>
+	<string>$(FacebookDisplayName)</string>
 	<key>FirebaseAppID</key>
-	<string>1:998015044363:ios:7e506151e1b2d079c3b00e</string>
+	<string>$(FirebaseAppID)</string>
+	<key>GIDClientID</key>
+	<string>$(GIDClientID)</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -64,8 +80,14 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSApplicationCrashOnExceptions</key>
+	<true/>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>We use your data to provide personalized ads and improve your experience.</string>
+	<key>TiktokAccessToken</key>
+	<string>$(TiktokAccessToken)</string>
+	<key>TiktokAppID</key>
+	<string>$(TiktokAppID)</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen-iPhone</string>
 	<key>UILaunchStoryboardName~ipad</key>
@@ -107,11 +129,5 @@
 	<true/>
 	<key>Unity_LoadingActivityIndicatorStyle</key>
 	<integer>-1</integer>
-	<key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
-	<true/>
-	<key>FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED</key>
-	<false/>
-	<key>NSApplicationCrashOnExceptions</key>
-	<true/>
 </dict>
 </plist>

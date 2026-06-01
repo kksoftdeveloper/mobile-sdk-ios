@@ -63,7 +63,9 @@ import TrackingSDK
     public typealias OnCallback = @convention(c) (UnsafePointer<CChar>?) -> Void
     private var onCallback: OnCallback?
     
-    var authManager : AuthManager = AuthServiceProvider.Builder().setEnvironment(Environment.staging).build().authManager
+    let authService = AuthServiceProvider.Builder()
+    
+    var authManager : AuthManager?
     
     // TrackingSDK manager
     var trackingManager: TrackingManager?
@@ -78,8 +80,14 @@ import TrackingSDK
     private var lastGuestToken: String?
     private var isAutoLinkDialogShowing: Bool = false
     
+    private let env = (Bundle.main.infoDictionary?[ "APP_ENV" ] as? String ?? "staging") == "production" ? Environment.production : Environment.staging
+    
     // ServerId
     private var serverId = "IOS1"
+    
+    public override init() {
+        authManager = AuthServiceProvider.Builder().setEnvironment(env).build().authManager
+    }
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -91,7 +99,7 @@ import TrackingSDK
         NSLog ( "---- KKSOFT debug bundle-id = \(bundleId)")
 #else
         let bundleId = Bundle.main.bundleIdentifier
-        NSLog ( "---- KKSOFT release bundle-id = \(bundleId)")
+        NSLog ( "---- KKSOFT release bundle-id = \(bundleId ?? "")")
 #endif
         
         self.onCallback = onCallback
@@ -100,14 +108,14 @@ import TrackingSDK
         // Initialize TrackingSDK
         initializeTrackingSDK()
         
-        authManager.initSDK(
-            packageName: Bundle.main.bundleIdentifier ?? "com.i.one.tsvn",
+        authManager?.initSDK(
+            packageName: Bundle.main.bundleIdentifier ?? "com.kksoft.vn.ts3.staging",
             appVersion: Bundle.main.infoDictionary? [ "CFBundleShortVersionString" ] as? String ?? "1.0.0",
             serverId: serverId
         )
         .receive(on: DispatchQueue.main)
         .flatMap { [weak self] gameInfo -> AnyPublisher<AuthSessionResponse, Error> in
-            guard let self = self else { return Empty().eraseToAnyPublisher() }
+            guard let self = self, let authManager = self.authManager else { return Empty().eraseToAnyPublisher() }
             let versionInfo = gameInfo.versionInfo
             
             NSLog ("---- KKSOFT Proxy Init before forceUpdate")
@@ -119,7 +127,7 @@ import TrackingSDK
                 return Empty().eraseToAnyPublisher()
             }
             NSLog ("---- KKSOFT Proxy Init after forceUpdate")
-            return self.authManager.getAuthSesssion()
+            return authManager.getAuthSesssion()
         }
         .receive(on: DispatchQueue.main)
         .sink(
@@ -186,9 +194,10 @@ import TrackingSDK
     
     @MainActor @objc public func Auth() {
         NSLog ( "---- KKSOFT Proxy Auth" )
+        guard let authManager = authManager else {return}
         let view = WelcomeView (
             authManager : authManager,
-            packageName : Bundle.main.bundleIdentifier ?? "com.i.one.tsvn",
+            packageName : Bundle.main.bundleIdentifier ?? "com.kksoft.vn.ts3.staging",
             appVersionName : Bundle.main.infoDictionary? [ "CFBundleShortVersionString" ] as? String ?? "1.0.0",
             serverId: serverId,
             onSuccess: { data in
@@ -262,6 +271,7 @@ import TrackingSDK
     
     @MainActor public func showLogout(session: AuthSessionResponse?) {
         print("Show Logout View")
+        guard let authManager = authManager else {return}
         
         // Track screen view when logout screen opens
         trackScreen("Logout-Screen", parameters: [
@@ -278,12 +288,12 @@ import TrackingSDK
             },
             onConfirm: {
                 print("Logout API")
-                self.authManager.logout()
+                authManager.logout()
                     .receive(on: DispatchQueue.main)
                     .sink(
                         receiveCompletion: {  completionStatus in
                             
-                            if case .failure(let error) = completionStatus {
+                            if case .failure(_) = completionStatus {
                                 var jsonPairs : [ String : Any ]
                                 jsonPairs = [ : ]
                                 jsonPairs [ "ResponseCode" ] = KKSOFTProxy
@@ -338,8 +348,9 @@ import TrackingSDK
     
     @MainActor public func showGameServerView(session: AuthSessionResponse?) {
         print("Show Game Server View")
+        guard let authManager = authManager else {return}
         let view = GameServerView(
-            authManager: self.authManager,
+            authManager: authManager,
             isShownCloseButton: true,
             onClose: {
                 let json = "UPDATE_GAME_SERVER".toDictionnary();
@@ -349,7 +360,7 @@ import TrackingSDK
                 })
             },
             onUpdatedGameServer: { [weak self] selectedGameServerId, gameUUID in
-                //                guard let self = self else { return }
+                                guard let self = self else { return }
                 //                let json = session?.copy(
                 //                    gameUUID: gameUUID, serverId: selectedGameServerId
                 //                ).toDictionnary(responseCode: "UPDATE_GAME_SERVER")
@@ -370,6 +381,7 @@ import TrackingSDK
     
     @MainActor public func showPackageItems(session: AuthSessionResponse) {
         print("Show Game Server View")
+        guard let authManager = authManager else {return}
         //        let view = PackageListView(
         //            viewModel: <#T##PackageListViewModel#>, onCloseClick: <#T##() -> Void#>)(
         //            authManager: self.authManager,
@@ -394,7 +406,7 @@ import TrackingSDK
         //            }
         //        )
         print("server-id = \(serverId)")
-        print("game-id = \(authManager.getGameId())")
+        print("game-id = \(authManager.getGameId() ?? 0)")
         print("is-guest-user = \(authManager.isGuestUser())")
         let view = PackageListView(
             onCloseClick: {
@@ -403,7 +415,7 @@ import TrackingSDK
                     self.showMenu(session: session)
                 })
             },
-            packageName: Bundle.main.bundleIdentifier ?? "com.i.one.tsvn",
+            packageName: Bundle.main.bundleIdentifier ?? "com.kksoft.vn.ts3.staging",
             gameId: authManager.getGameId() ?? 1,
             deviceId: authManager.getDeviceID(),
             osVersion: "15.0",
@@ -412,7 +424,7 @@ import TrackingSDK
             phoneNumber: authManager.getPhoneNumber(),
             appVersion: Bundle.main.infoDictionary? [ "CFBundleShortVersionString" ] as? String ?? "1.0.0",
             serverId: "\(serverId)",
-            gameUUID: "\(session.gameUUID)",
+            gameUUID: "\(session.gameUUID ?? "")",
             isGuestUser: authManager.isGuestUser()
         )
         let controller = UIHostingController(rootView: AnyView(view))
@@ -425,6 +437,7 @@ import TrackingSDK
     
     @MainActor public func showDeactivateAccount(session: AuthSessionResponse?) {
         print("Show Deactivate Account View")
+        guard let authManager = authManager else {return}
         let view = DeactivateAccountView(
             onClose: {
                 self.Callback(jsonPairs: "DELETE_ACCOUNT".toDictionnary())
@@ -454,7 +467,7 @@ import TrackingSDK
                     self.showMenu(session: session, error: "Delete account error")
                 })
             },
-            authManager: self.authManager
+            authManager: authManager
         )
         let controller = UIHostingController(rootView: AnyView(view))
         controller.overrideUserInterfaceStyle = .light
@@ -466,7 +479,7 @@ import TrackingSDK
     
     @MainActor public func showLinkAccount(session: AuthSessionResponse?) {
         print("Show Link Account View")
-        print("Show Link Account View")
+        guard let authManager = authManager else {return}
         
         // 1) Safely unwrap the token
         guard let guestToken = session?.accessToken, !guestToken.isEmpty else {
@@ -476,7 +489,7 @@ import TrackingSDK
         
         // 2) Build the SwiftUI view (explicit type helps the compiler)
         let view: LinkAccountView = LinkAccountView(
-            authManager: self.authManager,
+            authManager: authManager,
             guestToken: guestToken,
             onSuccess: { _ in
                 var jsonPairs: [String: Any] = [:]
@@ -522,7 +535,8 @@ import TrackingSDK
     }
     
     public func refreshToken(session: AuthSessionResponse?) {
-        self.authManager.refreshToken()
+        guard let authManager = authManager else {return}
+        authManager.refreshToken()
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { [weak self] completionStatus in
@@ -549,7 +563,8 @@ import TrackingSDK
     }
     
     @objc public func getLatestSession() {
-        self.authManager.getAuthSesssion()
+        guard let authManager = authManager else {return}
+        authManager.getAuthSesssion()
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { [weak self] completionStatus in
@@ -578,6 +593,7 @@ import TrackingSDK
     @MainActor
     @objc public func startAutoLinkAccountLoop(timeToRemindInSeconds: Int = 60, guestToken: String,
                                                _ completion: @escaping (NSDictionary?, NSError?) -> Void) {
+        guard authManager != nil else { return }
         stopAutoLinkAccountLoop()
         autoLinkPopupInterval = timeToRemindInSeconds
         autoLinkRemainingSeconds = autoLinkPopupInterval
@@ -593,71 +609,67 @@ import TrackingSDK
                     } else {
                         print("🔔 Showing LinkAccountView now")
                         self.isAutoLinkDialogShowing = true
-                        Task { @MainActor in
-                            // 👇 Add another guard here to guarantee `self` is not nil
-                            //                     guard let self = self else { return }
-                            print("Show Link Account View")
-                            
-                            var controller: UIHostingController<AnyView>? = nil
-                            let view = LinkAccountView(
-                                authManager: self.authManager,
-                                // <- now safe!
-                                guestToken: guestToken,
-                                onSuccess: {  data in
-                                    self.Callback(
-                                        jsonPairs: data
-                                            .toDictionnary(responseCode: "AUTH")
-                                    )
-                                    self.isAutoLinkDialogShowing = false
-                                    controller?
-                                        .dismiss(animated: true, completion: nil)
-                                    self.stopAutoLinkAccountLoop()
-                                },
-                                onFailure: { [weak self] error in
-                                    guard let self = self else { return }
-                                    let nsError = NSError(
-                                        domain: "com.i.auth",
-                                        code: -1
-                                    )
-                                    self.isAutoLinkDialogShowing = false
-                                    controller?
-                                        .dismiss(animated: true, completion: nil)
-                                    self.Callback(jsonPairs: error.toDictionary())
-                                },
-                                onClose: {
-                                    "AUTH".toDictionnary()
-                                    self.isAutoLinkDialogShowing = false
-                                    controller?
-                                        .dismiss(animated: true, completion: nil)
-                                }
-                            )
-                            controller = UIHostingController(
-                                rootView: AnyView(view)
-                            )
-                            controller?.overrideUserInterfaceStyle = .light
-                            controller?.modalPresentationStyle = .overCurrentContext // or .overFullScreen
-                            controller?.view.backgroundColor = UIColor(
-                                white: 0,
-                                alpha: 0.3
-                            )
-                            if let topVC = self.getRootViewController() {
-                                var visibleVC = topVC
-                                while let presented = visibleVC.presentedViewController {
-                                    visibleVC = presented
-                                }
-                                visibleVC
-                                    .present(
-                                        controller!,
-                                        animated: true,
-                                        completion: nil
-                                    )
-                            } else {
-                                print(
-                                    "❌ Could not find root view controller to present LinkAccountView!"
+                        guard let authManager = self.authManager else { return }
+                        print("Show Link Account View")
+                        
+                        var controller: UIHostingController<AnyView>? = nil
+                        let view = LinkAccountView(
+                            authManager: authManager,
+                            guestToken: guestToken,
+                            onSuccess: { data in
+                                self.Callback(
+                                    jsonPairs: data
+                                        .toDictionnary(responseCode: "AUTH")
                                 )
+                                self.isAutoLinkDialogShowing = false
+                                controller?
+                                    .dismiss(animated: true, completion: nil)
+                                self.stopAutoLinkAccountLoop()
+                            },
+                            onFailure: { [weak self] error in
+                                guard let self = self else { return }
+                                _ = NSError(
+                                    domain: "com.i.auth",
+                                    code: -1
+                                )
+                                self.isAutoLinkDialogShowing = false
+                                controller?
+                                    .dismiss(animated: true, completion: nil)
+                                self.Callback(jsonPairs: error.toDictionary())
+                            },
+                            onClose: {
+                                "AUTH".toDictionnary()
+                                self.isAutoLinkDialogShowing = false
+                                controller?
+                                    .dismiss(animated: true, completion: nil)
                             }
-                            self.autoLinkRemainingSeconds = self.autoLinkPopupInterval
+                        )
+                        controller = UIHostingController(
+                            rootView: AnyView(view)
+                        )
+                        controller?.overrideUserInterfaceStyle = .light
+                        controller?.modalPresentationStyle = .overCurrentContext // or .overFullScreen
+                        controller?.view.backgroundColor = UIColor(
+                            white: 0,
+                            alpha: 0.3
+                        )
+                        if let topVC = self.getRootViewController() {
+                            var visibleVC = topVC
+                            while let presented = visibleVC.presentedViewController {
+                                visibleVC = presented
+                            }
+                            visibleVC
+                                .present(
+                                    controller!,
+                                    animated: true,
+                                    completion: nil
+                                )
+                        } else {
+                            print(
+                                "❌ Could not find root view controller to present LinkAccountView!"
+                            )
                         }
+                        self.autoLinkRemainingSeconds = self.autoLinkPopupInterval
                     }
                 }
             }
@@ -726,7 +738,7 @@ import TrackingSDK
                 }
             },
             onClickTokenExpiration: {
-                if let session = session {
+                if session != nil {
                     self.showTokenExpiration(/*session: session*/)
                 }
             },
@@ -868,8 +880,9 @@ import TrackingSDK
     }
     
     @MainActor private func showGameServerView(data: AuthSessionResponse) {
+        guard let authManager = authManager else {return}
         let view = GameServerView (
-            authManager : self.authManager,
+            authManager : authManager,
             onUpdatedGameServer: { gameServerId, gameUUID in
                 //                NSLog ( "---- KKSOFT Proxy UPDATE_GAME_SERVER " )
                 //                let ret = data.copy(gameUUID: gameUUID,serverId: gameServerId)
@@ -936,20 +949,25 @@ import TrackingSDK
         
         // Initialize TrackingSDK with AppFlyers
         let builder = TrackingServiceProvider.Builder()
-            .enableAppFlyers(
-                appID: "6751104811",  // App ID without "id"` prefix
-                devKey: "bXnAJLj5T8si5GhhSad9TY"
-            )
+//            .enableAppFlyers(
+//                appID: Bundle.main.infoDictionary?[ "AppFlyersId" ] as? String ?? ""
+//                devKey: Bundle.main.infoDictionary?[ "AppFlyersDevKey" ] as? String ?? ""
+//            )
             .enableAdjust(
-                appID: "6751104811",  // Same App ID
-                appToken: "x04fe8zhx6gw"  // Replace with your Adjust app token
+                appID: Bundle.main.infoDictionary?[ "AdjustId" ] as? String ?? "",
+                appToken: Bundle.main.infoDictionary?[ "AdjustToken" ] as? String ?? ""
+            )
+            .enableTikTok(
+                accessToken: Bundle.main.infoDictionary?[ "TiktokAccessToken" ] as? String ?? "",
+                appID: Bundle.main.bundleIdentifier ?? "com.kksoft.vn.ts3.staging",
+                tiktokAppID: Bundle.main.infoDictionary?[ "TiktokAppID" ] as? String ?? ""
             )
         
-        if Bundle.main.url(forResource: "GoogleService-Info", withExtension: "plist") != nil {
+        if Bundle.main.url(forResource: "GoogleService-Info-\(env == .production ? "Production" : "Staging")", withExtension: "plist") != nil {
             let firebaseAppID = Bundle.main.object(forInfoDictionaryKey: "FirebaseAppID") as? String
             _ = builder.enableFirebaseAnalytics(appID: firebaseAppID ?? "")
             _ = builder.enableFirebaseCrashlytics()
-            NSLog("---- KKSOFT Proxy Firebase Analytics Enabled \(firebaseAppID)")
+            NSLog("---- KKSOFT Proxy Firebase Analytics Enabled \(firebaseAppID ?? "")")
         } else {
             NSLog("---- KKSOFT Proxy Firebase Analytics skipped (GoogleService-Info.plist not found)")
         }

@@ -13,6 +13,7 @@ public enum TrackingProviderKind: Hashable {
     case appsFlyer
     case firebaseAnalytics
     case adjust
+    case tiktok
     case custom(String)
     
     public var identifier: String {
@@ -23,6 +24,8 @@ public enum TrackingProviderKind: Hashable {
             return "firebaseAnalytics"
         case .adjust:
             return "adjust"
+        case .tiktok:
+            return "tiktok"
         case .custom(let value):
             return value
         }
