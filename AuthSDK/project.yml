@@ -1,0 +1,154 @@
+name: AuthSDK
+options:
+  bundleIdPrefix: com.dar.authsdk
+  deploymentTarget:
+    iOS: "15.0"
+
+configs:
+  Dev: debug
+  Staging: release
+  Production: release
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    ENABLE_PREVIEWS: true
+    MARKETING_VERSION: 1.0.0
+    CURRENT_PROJECT_VERSION: 1
+    OTHER_LDFLAGS: $(inherited)
+    DEVELOPMENT_LANGUAGE: vi
+  configs:
+    Dev:
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEV
+      ENABLE_TESTABILITY: true
+    Staging:
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: STAGING
+      ENABLE_TESTABILITY: true
+    Production:
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: PRODUCTION
+      ENABLE_TESTABILITY: true
+
+targets:
+  AuthSDK:
+    type: framework
+    product: framework
+    platform: iOS
+    supportedDestinations: [iOS]
+    deploymentTarget: "15.0"
+    sources:
+      - path: Sources/AuthSDK
+        excludes:
+          - SupportingFiles/Info.plist
+      - path: Sources/AuthSDKUI
+      - path: Sources/Assets.xcassets
+      - path: Sources/Localization.xcstrings
+      - path: Sources/Fonts/FS-ClanPro-NarrowUltra.ttf 
+      - path: Sources/Fonts/Poppins-Bold.ttf
+      - path: Sources/Fonts/Poppins-Light.ttf
+      - path: Sources/Fonts/Poppins-LightItalic.ttf
+      - path: Sources/Fonts/Poppins-Medium.ttf
+      - path: Sources/Fonts/Poppins-SemiBold.ttf
+      - path: Sources/Fonts/Poppins-Thin.ttf
+    resources:
+      - path: "Sources/Assets.xcassets"
+      - path: "Localization.xcstrings"
+      - path: "Sources/Fonts/**"
+    dependencies:
+      - package: GoogleSignIn-iOS
+        product: GoogleSignIn
+      - package: GoogleSignIn-iOS
+        product: GoogleSignInSwift
+      - package: Facebook
+        product: FacebookCore
+      - package: Facebook
+        product: FacebookLogin
+      - package: TrackingSDK
+        product: TrackingSDK
+      - package: mixpanel
+        product: Mixpanel
+    settings:
+      BUILD_LIBRARY_FOR_DISTRIBUTION: YES
+      SKIP_INSTALL: NO
+      ENABLE_USER_SCRIPT_SANDBOXING: YES
+      INFOPLIST_FILE: Sources/AuthSDK/SupportingFiles/Info.plist
+      PRODUCT_BUNDLE_IDENTIFIER: com.dar.authsdk
+
+  AuthSDKTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "15.0"
+    sources:
+      - path: Sources/AuthSDKTests
+    dependencies:
+      - target: AuthSDK
+    settings:
+      INFOPLIST_FILE: Sources/AuthSDKTests/Info.plist
+      PRODUCT_BUNDLE_IDENTIFIER: com.dar.authsdk.tests
+      # TEST_HOST: $(BUILT_PRODUCTS_DIR)/AuthSDK.framework/AuthSDK
+      # INFO_PLIST:
+      #     UIAppFonts:
+      #       - "Sources/Fonts/FS-ClanPro-NarrowUltra.ttf"
+      #       - "Sources/Fonts/Poppins-Bold.ttf" 
+      #       - "Sources/Fonts/Poppins-Light.ttf"
+      #       - "Sources/Fonts/Poppins-LightItalic.ttf"
+      #       - "Sources/Fonts/Poppins-Medium.ttf"
+      #       - "Sources/Fonts/Poppins-SemiBold.ttf"
+      #       - "Sources/Fonts/Poppins-Thin.ttf"
+schemes:
+  AuthSDK-Dev:
+    archive:
+      config: Dev
+    build:
+      targets:
+        AuthSDK: all
+        AuthSDKTests: all
+    test:
+      targets:
+        AuthSDKTests:
+          parallelizable: false
+          randomExecutionOrder: false
+    run:
+      config: Dev
+
+  AuthSDK-Staging:
+    archive:
+      config: Staging
+    build:
+      targets:
+        AuthSDK: all
+        AuthSDKTests: all
+    test:
+      targets:
+        AuthSDKTests:
+          parallelizable: false
+          randomExecutionOrder: false
+    run:
+      config: Staging
+
+  AuthSDK-Production:
+    archive:
+      config: Production
+    build:
+      targets:
+        AuthSDK: all
+        AuthSDKTests: all
+    test:
+      targets:
+        AuthSDKTests:
+          parallelizable: false
+          randomExecutionOrder: false
+    run:
+      config: Production
+
+packages:
+  GoogleSignIn-iOS:
+    url: https://github.com/google/GoogleSignIn-iOS
+    exactVersion: 8.0.0
+  Facebook:
+    url: https://github.com/facebook/facebook-ios-sdk
+    exactVersion: 18.0.0
+  TrackingSDK:
+    path: ../TrackingSDK
+  mixpanel:
+    url: https://github.com/mixpanel/mixpanel-swift.git
+    exactVersion: 5.0.0

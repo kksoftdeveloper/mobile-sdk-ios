@@ -1,0 +1,40 @@
+lane :create_app do 
+  create_app_online # produce
+end
+
+platform :ios do
+  before_all do
+    Dotenv.load ".env.ios"
+  end
+
+  desc "Fetch and checkout the latest from Git"
+  lane :pull_code do
+    branch = "main"
+    UI.message "Pulling #{branch}"
+    sh("git fetch origin")
+    sh("git checkout #{branch}")
+    sh("git pull origin #{branch}")
+  end
+
+  desc "Sync signing"
+  lane :signing do
+    pull_code
+    sync_code_signing # match
+    mapping = Actions.lane_context[
+      SharedValues::MATCH_PROVISIONING_PROFILE_MAPPING
+    ]
+    update_code_signing_settings(
+      profile_name: mappng[ENV['MATCH_APP_IDENTIFIER']]
+    )
+  end
+  
+  desc "Build binary"
+  lane :build do
+    signing
+  end
+
+  desc "Release"
+  lane :release do
+    build
+  end
+end

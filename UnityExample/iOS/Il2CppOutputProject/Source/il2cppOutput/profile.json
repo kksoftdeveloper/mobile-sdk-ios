@@ -1,0 +1,716 @@
+{
+
+"Instructions Readme": "1) Open Chrome or Edge, 2) go to chrome://tracing, 3) click Load, 4) navigate to this file.",
+"processInfo": {
+    "os": "Unix 26.5.0",
+    "cpuCount": "10",
+    "mappedPhysicalMemory": "54mb",
+    "commandLine": "/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/build/deploy_arm64/il2cpp.dll --compile-cpp --platform=iOS --baselib-directory=/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Libraries --additional-defines=IL2CPP_DEBUG=0 --incremental-g-c-time-slice=3 --dotnetprofile=unityaot-macos --profiler-report --print-command-line --external-lib-il2-cpp=/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Libraries/libil2cpp.a --generatedcppdir=Il2CppOutputProject/Source/il2cppOutput --architecture=arm64 --outputpath=/Users/kksoft/Library/Developer/Xcode/DerivedData/Unity-iPhone-drizzasizrnsmicyspmusrjuqktt/Build/Products/Debug-Staging-iphoneos/libGameAssembly.a --cachedirectory=/Users/kksoft/Library/Developer/Xcode/DerivedData/Unity-iPhone-drizzasizrnsmicyspmusrjuqktt/Build/Intermediates.noindex/Unity-iPhone.build/Debug-Staging-iphoneos/artifacts/arm64 --configuration=Release"
+},
+
+"traceEvents":[
+{ "pid": 17158, "tid": -1, "ph": "M", "name": "process_name", "args": { "name": "il2cpp_outer" } },
+{ "pid": 17158, "tid": -1, "ph": "M", "name": "process_sort_index", "args": { "sort_index": "-1" } },
+{ "pid": 17158, "tid": 12884901888, "ph": "M", "name": "thread_name", "args": { "name": "GC - Gen2" } },
+{ "pid": 17158, "tid": 1, "ts": 1780283671669664, "dur": 1544, "ph": "X", "name": "GC - Gen2", "args": {} },
+{ "pid": 17158, "tid": 8589934592, "ph": "M", "name": "thread_name", "args": { "name": "GC - Gen1" } },
+{ "pid": 17158, "tid": 4294967296, "ph": "M", "name": "thread_name", "args": { "name": "GC - Gen0" } },
+{ "pid": 17158, "tid": 1, "ph": "M", "name": "thread_name", "args": { "name": "Main thread" } },
+{ "pid": 17158, "tid": 1, "ts": 1780283671302492, "dur": 347763, "ph": "X", "name": "il2cpp.exe", "args": {"analytics": "1"} },
+{ "pid": 17158, "tid": 1, "ts": 1780283671306605, "dur": 61259, "ph": "X", "name": "ParseArguments", "args": {} },
+{ "pid": 17158, "tid": 1, "ts": 1780283671367866, "dur": 11794, "ph": "X", "name": "RegisterRuntimeEventListeners", "args": {} },
+{ "pid": 17158, "tid": 1, "ts": 1780283671395279, "dur": 239462, "ph": "X", "name": "BeeDriverRunner.ExecuteIl2Cpp", "args": {} },
+{ "pid": 17158, "tid": 1, "ts": 1780283671638624, "dur": 9000, "ph": "X", "name": "Write Analytics", "args": {} },
+{ "pid": 17158, "tid": 1, "ts": 1780283671650258, "dur": 12878, "ph": "X", "name": "UnregisterRuntimeEventListeners", "args": {} },
+{ "pid": 17158, "tid": -1, "ph": "M", "name": "process_name", "args": { "name": "BeeDriver" } },
+{ "pid": 17158, "tid": -1, "ph": "M", "name": "process_sort_index", "args": { "sort_index": "-2" } },
+{ "pid": 17158, "tid": 1, "ph": "M", "name": "thread_name", "args": { "name": "Main thread" } },
+{ "pid": 17158, "tid": 1, "ts": 1780283671520361, "dur": 121100, "ph": "X", "name": "Build FinalProgram", "args": {} },
+{ "pid": 17158, "tid": 1, "ts": 1780283671522201, "dur": 9136, "ph": "X", "name": "Writing build program input data", "args": {} },
+{ "pid": 17158, "tid": 1, "ts": 1780283671531360, "dur": 110043, "ph": "X", "name": "Running build system backend", "args": {} },
+{ "pid": 17158, "tid": 1, "ts": 1780283671641427, "dur": 33, "ph": "X", "name": "Finishing", "args": {} },
+{ "pid": 17158, "tid": 1, "ts": 1780283671648687, "dur": 1660, "ph": "X", "name": "Main thread", "args": {} },
+{ "cat":"", "pid":12345, "tid":0, "ts":0, "ph":"M", "name":"process_name", "args": { "name":"bee_backend" } }
+,{ "pid":12345, "tid":0, "ts":1780283671582556, "dur":1201, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1780283671584221, "dur":1980, "ph":"X", "name": "RemoveStaleOutputs",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1780283671586217, "dur":114, "ph":"X", "name": "BuildQueueInit",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1780283671586335, "dur":90, "ph":"X", "name": "EnqueueRequestedNodes",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1780283671586426, "dur":36533, "ph":"X", "name": "WaitForBuildFinished", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1780283671623042, "dur":1420, "ph":"X", "name": "Tundra",  "args": { "detail":"Write AllBuiltNodes" }}
+,{ "pid":12345, "tid":1, "ts":1780283671586267, "dur":162, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1780283671586430, "dur":16378, "ph":"X", "name": "CheckDagSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1780283671602845, "dur":83, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1780283671602933, "dur":88, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/GenericMethods.cpp" }}
+,{ "pid":12345, "tid":1, "ts":1780283671603022, "dur":10198, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/GenericMethods.cpp" }}
+,{ "pid":12345, "tid":1, "ts":1780283671613296, "dur":138, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Internal/Baselib_CappedSemaphore_SemaphoreBased.inl.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671613434, "dur":60, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_SystemFutex.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671613494, "dur":52, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/Atomic.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671613860, "dur":369, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/google/sparsehash/template_util.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671614230, "dur":83, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Platforms/IOS/Include/BaselibPlatformSpecificEnvironment.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671613228, "dur":1168, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1780283671602932, "dur":11464, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/6h806oo2jx4f.o" }}
+,{ "pid":12345, "tid":1, "ts":1780283671614396, "dur":190, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1780283671614588, "dur":335, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/System__1.cpp" }}
+,{ "pid":12345, "tid":1, "ts":1780283671614923, "dur":2436, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/System__1.cpp" }}
+,{ "pid":12345, "tid":1, "ts":1780283671617544, "dur":57, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Internal/Compiler/Baselib_Atomic_Msvc.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671617648, "dur":111, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/google/sparsehash/sparse_hash_map.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671617907, "dur":143, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_ErrorCode.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671618178, "dur":66, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Internal/Baselib_CappedSemaphore_SemaphoreBased.inl.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671618245, "dur":50, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_SystemFutex.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671618428, "dur":58, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/metadata/Il2CppGenericContextHash.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671618605, "dur":51, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/Type.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671618657, "dur":69, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/utils/Il2CppError.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671618771, "dur":53, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm-utils/VmThreadUtils.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671618903, "dur":115, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/google/sparsehash/type_traits.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671619050, "dur":57, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Platforms/IOS/Include/BaselibPlatformSpecificEnvironment.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671619138, "dur":99, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/google/sparsehash/internal/libc_allocator_with_realloc.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671619238, "dur":143, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/utils/StringView.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671619516, "dur":76, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/Handle.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671619725, "dur":62, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/gc/GarbageCollector.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671619788, "dur":275, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/WaitStatus.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671620141, "dur":55, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/Event.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671620197, "dur":123, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/pch/pch-cpp.hpp" }}
+,{ "pid":12345, "tid":1, "ts":1780283671620344, "dur":55, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/Runtime.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671620417, "dur":67, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/Internal/PlatformEnvironment.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671620515, "dur":142, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/google/sparsehash/sparsetable.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671620760, "dur":188, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/utils/Memory.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671620985, "dur":61, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/Internal/VerifyPlatformEnvironment.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671621082, "dur":82, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/c-api/il2cpp-config-platforms.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671621327, "dur":135, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/Thread.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671621463, "dur":69, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/Thread.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671621532, "dur":64, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-string-types.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671621597, "dur":271, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/codegen/il2cpp-codegen-tiny.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671621868, "dur":74, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/utils/ExceptionSupportStack.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671621981, "dur":99, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/Cpp/ReentrantLock.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671622118, "dur":87, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/Assembly.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671622243, "dur":136, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/Cpp/Time.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671622380, "dur":82, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/codegen/il2cpp-codegen-metadata.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671622463, "dur":164, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/Internal/ArchitectureDetection.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671622666, "dur":94, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/ErrorCodes.h" }}
+,{ "pid":12345, "tid":1, "ts":1780283671617365, "dur":5435, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1780283671614587, "dur":8213, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/dk23ugdittun.o" }}
+,{ "pid":12345, "tid":1, "ts":1780283671622823, "dur":148, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1780283671586526, "dur":16385, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1780283671602915, "dur":115, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.AudioModule_CodeGen.c" }}
+,{ "pid":12345, "tid":2, "ts":1780283671603031, "dur":2314, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.AudioModule_CodeGen.c" }}
+,{ "pid":12345, "tid":2, "ts":1780283671602914, "dur":2454, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/ak79hd8p9j20.o" }}
+,{ "pid":12345, "tid":2, "ts":1780283671605368, "dur":69, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1780283671605440, "dur":72, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Unity.InternalAPIEngineBridge.001_CodeGen.c" }}
+,{ "pid":12345, "tid":2, "ts":1780283671605513, "dur":109, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Unity.InternalAPIEngineBridge.001_CodeGen.c" }}
+,{ "pid":12345, "tid":2, "ts":1780283671605622, "dur":120, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++" }}
+,{ "pid":12345, "tid":2, "ts":1780283671606073, "dur":52, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-pinvoke-support.h" }}
+,{ "pid":12345, "tid":2, "ts":1780283671606029, "dur":184, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1780283671605439, "dur":774, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/lvktlhfbjy98.o" }}
+,{ "pid":12345, "tid":2, "ts":1780283671606213, "dur":109, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1780283671606365, "dur":554, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/System.Xml_CodeGen.c" }}
+,{ "pid":12345, "tid":2, "ts":1780283671607334, "dur":75, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-metadata.h" }}
+,{ "pid":12345, "tid":2, "ts":1780283671607156, "dur":325, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1780283671606322, "dur":1160, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/rx0lwhfp1fgs.o" }}
+,{ "pid":12345, "tid":2, "ts":1780283671607509, "dur":70, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.IMGUIModule.cpp" }}
+,{ "pid":12345, "tid":2, "ts":1780283671607580, "dur":5614, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.IMGUIModule.cpp" }}
+,{ "pid":12345, "tid":2, "ts":1780283671613199, "dur":198, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1780283671607509, "dur":5889, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/3go6eqp8ymvh.o" }}
+,{ "pid":12345, "tid":2, "ts":1780283671613442, "dur":104, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.AnimationModule.cpp" }}
+,{ "pid":12345, "tid":2, "ts":1780283671613546, "dur":1000, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.AnimationModule.cpp" }}
+,{ "pid":12345, "tid":2, "ts":1780283671614598, "dur":77, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/PlatformInvoke.h" }}
+,{ "pid":12345, "tid":2, "ts":1780283671614553, "dur":444, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1780283671613441, "dur":1556, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/wlkgkjfvny2a.o" }}
+,{ "pid":12345, "tid":2, "ts":1780283671615042, "dur":59, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/System.Configuration.cpp" }}
+,{ "pid":12345, "tid":2, "ts":1780283671615101, "dur":883, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/System.Configuration.cpp" }}
+,{ "pid":12345, "tid":2, "ts":1780283671616036, "dur":85, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++" }}
+,{ "pid":12345, "tid":2, "ts":1780283671616622, "dur":51, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/metadata/Il2CppTypeHash.h" }}
+,{ "pid":12345, "tid":2, "ts":1780283671616682, "dur":77, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Internal/Compiler/Baselib_Atomic_Msvc.h" }}
+,{ "pid":12345, "tid":2, "ts":1780283671616760, "dur":51, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/metadata/Il2CppSignature.h" }}
+,{ "pid":12345, "tid":2, "ts":1780283671616842, "dur":57, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/google/sparsehash/sparse_hash_map.h" }}
+,{ "pid":12345, "tid":2, "ts":1780283671616938, "dur":53, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/utils/KeyWrapper.h" }}
+,{ "pid":12345, "tid":2, "ts":1780283671616991, "dur":172, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_Alignment.h" }}
+,{ "pid":12345, "tid":2, "ts":1780283671617200, "dur":88, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/utils/NonCopyable.h" }}
+,{ "pid":12345, "tid":2, "ts":1780283671616274, "dur":1117, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1780283671615041, "dur":2350, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/mdp7ga29l26s.o" }}
+,{ "pid":12345, "tid":2, "ts":1780283671617477, "dur":410, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__16.cpp" }}
+,{ "pid":12345, "tid":2, "ts":1780283671617943, "dur":688, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1780283671617430, "dur":1201, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/hv7163z8iywl.o" }}
+,{ "pid":12345, "tid":2, "ts":1780283671618631, "dur":78, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1780283671618739, "dur":469, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__10.cpp" }}
+,{ "pid":12345, "tid":2, "ts":1780283671619282, "dur":120, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_Thread.h" }}
+,{ "pid":12345, "tid":2, "ts":1780283671619508, "dur":53, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/Internal/Assert.h" }}
+,{ "pid":12345, "tid":2, "ts":1780283671619749, "dur":76, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/MetadataCache.h" }}
+,{ "pid":12345, "tid":2, "ts":1780283671619213, "dur":648, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1780283671618710, "dur":1151, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/3opgb7hmz5nl.o" }}
+,{ "pid":12345, "tid":2, "ts":1780283671619861, "dur":239, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1780283671620124, "dur":266, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppInvokerTable.cpp" }}
+,{ "pid":12345, "tid":2, "ts":1780283671620534, "dur":324, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1780283671620100, "dur":758, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/rscq4hv63nml.o" }}
+,{ "pid":12345, "tid":2, "ts":1780283671620859, "dur":107, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1780283671620997, "dur":249, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Generics__9.cpp" }}
+,{ "pid":12345, "tid":2, "ts":1780283671621322, "dur":53, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Internal/Baselib_Lock_SemaphoreBased.inl.h" }}
+,{ "pid":12345, "tid":2, "ts":1780283671621581, "dur":283, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/google/sparsehash/type_traits.h" }}
+,{ "pid":12345, "tid":2, "ts":1780283671621865, "dur":53, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/google/sparsehash/template_util.h" }}
+,{ "pid":12345, "tid":2, "ts":1780283671621979, "dur":99, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/google/sparsehash/internal/libc_allocator_with_realloc.h" }}
+,{ "pid":12345, "tid":2, "ts":1780283671622113, "dur":89, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/ScopedThreadAttacher.h" }}
+,{ "pid":12345, "tid":2, "ts":1780283671622226, "dur":51, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/Handle.h" }}
+,{ "pid":12345, "tid":2, "ts":1780283671622280, "dur":56, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/Posix/ThreadLocalValueImpl.h" }}
+,{ "pid":12345, "tid":2, "ts":1780283671622410, "dur":84, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/utils/ExceptionSupportStack.h" }}
+,{ "pid":12345, "tid":2, "ts":1780283671621316, "dur":1225, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1780283671620967, "dur":1574, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/giazjn3y6nas.o" }}
+,{ "pid":12345, "tid":2, "ts":1780283671622541, "dur":108, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1780283671622649, "dur":283, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1780283671586326, "dur":106, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1780283671586474, "dur":16361, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1780283671602847, "dur":82, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1780283671602936, "dur":87, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.AnimationModule_CodeGen.c" }}
+,{ "pid":12345, "tid":3, "ts":1780283671603023, "dur":2223, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.AnimationModule_CodeGen.c" }}
+,{ "pid":12345, "tid":3, "ts":1780283671605571, "dur":57, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++" }}
+,{ "pid":12345, "tid":3, "ts":1780283671605768, "dur":54, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk/dummy" }}
+,{ "pid":12345, "tid":3, "ts":1780283671605955, "dur":90, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-runtime-metadata.h" }}
+,{ "pid":12345, "tid":3, "ts":1780283671606045, "dur":55, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-api-types.h" }}
+,{ "pid":12345, "tid":3, "ts":1780283671606133, "dur":53, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/codegen/il2cpp-codegen-metadata.h" }}
+,{ "pid":12345, "tid":3, "ts":1780283671606244, "dur":67, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-blob.h" }}
+,{ "pid":12345, "tid":3, "ts":1780283671605822, "dur":634, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1780283671602935, "dur":3522, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/kxy0a08sesfx.o" }}
+,{ "pid":12345, "tid":3, "ts":1780283671606457, "dur":63, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1780283671606521, "dur":66, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Mono.Security_CodeGen.c" }}
+,{ "pid":12345, "tid":3, "ts":1780283671606587, "dur":61, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Mono.Security_CodeGen.c" }}
+,{ "pid":12345, "tid":3, "ts":1780283671606742, "dur":59, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/pch/pch-c.h" }}
+,{ "pid":12345, "tid":3, "ts":1780283671606855, "dur":52, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/c-api/il2cpp-config-api-platforms.h" }}
+,{ "pid":12345, "tid":3, "ts":1780283671606712, "dur":245, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1780283671606521, "dur":436, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/2dwp21p0npyl.o" }}
+,{ "pid":12345, "tid":3, "ts":1780283671606957, "dur":86, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1780283671607068, "dur":58, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppGenericInstDefinitions.c" }}
+,{ "pid":12345, "tid":3, "ts":1780283671607043, "dur":144, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/21jgjrag0mc0.o" }}
+,{ "pid":12345, "tid":3, "ts":1780283671607255, "dur":166, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppGenericAdjustorThunkTable.c" }}
+,{ "pid":12345, "tid":3, "ts":1780283671607223, "dur":209, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/895t8lerlesa.o" }}
+,{ "pid":12345, "tid":3, "ts":1780283671607464, "dur":59, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.SharedInternalsModule.cpp" }}
+,{ "pid":12345, "tid":3, "ts":1780283671607523, "dur":5663, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.SharedInternalsModule.cpp" }}
+,{ "pid":12345, "tid":3, "ts":1780283671613193, "dur":209, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1780283671607463, "dur":5939, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/xkupyz0dh5hr.o" }}
+,{ "pid":12345, "tid":3, "ts":1780283671613403, "dur":53, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1780283671613457, "dur":75, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Unity.Mathematics.cpp" }}
+,{ "pid":12345, "tid":3, "ts":1780283671613532, "dur":1365, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Unity.Mathematics.cpp" }}
+,{ "pid":12345, "tid":3, "ts":1780283671614960, "dur":55, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_CappedSemaphore.h" }}
+,{ "pid":12345, "tid":3, "ts":1780283671615336, "dur":85, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/codegen/il2cpp-codegen-tiny.h" }}
+,{ "pid":12345, "tid":3, "ts":1780283671615483, "dur":59, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-runtime-metadata.h" }}
+,{ "pid":12345, "tid":3, "ts":1780283671615599, "dur":243, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/codegen/il2cpp-codegen-metadata.h" }}
+,{ "pid":12345, "tid":3, "ts":1780283671615843, "dur":133, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/Internal/ArchitectureDetection.h" }}
+,{ "pid":12345, "tid":3, "ts":1780283671615976, "dur":57, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/Mutex.h" }}
+,{ "pid":12345, "tid":3, "ts":1780283671616034, "dur":84, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/codegen/il2cpp-codegen-common.h" }}
+,{ "pid":12345, "tid":3, "ts":1780283671614903, "dur":1321, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1780283671613457, "dur":2767, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/8z0kxcl7i72i.o" }}
+,{ "pid":12345, "tid":3, "ts":1780283671616263, "dur":68, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__4.cpp" }}
+,{ "pid":12345, "tid":3, "ts":1780283671616332, "dur":583, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__4.cpp" }}
+,{ "pid":12345, "tid":3, "ts":1780283671616919, "dur":52, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-config-api.h" }}
+,{ "pid":12345, "tid":3, "ts":1780283671617039, "dur":119, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_SystemFutex.h" }}
+,{ "pid":12345, "tid":3, "ts":1780283671617198, "dur":70, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/ClassInlines.h" }}
+,{ "pid":12345, "tid":3, "ts":1780283671617269, "dur":144, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_Timer.h" }}
+,{ "pid":12345, "tid":3, "ts":1780283671616918, "dur":1050, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1780283671616262, "dur":1706, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/64ku4dr1uoa7.o" }}
+,{ "pid":12345, "tid":3, "ts":1780283671617968, "dur":130, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1780283671618134, "dur":1449, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__13.cpp" }}
+,{ "pid":12345, "tid":3, "ts":1780283671619755, "dur":118, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/icalls/mscorlib/System.Runtime.InteropServices/Marshal.h" }}
+,{ "pid":12345, "tid":3, "ts":1780283671619603, "dur":442, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1780283671618099, "dur":1946, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/asg9q5qf9js3.o" }}
+,{ "pid":12345, "tid":3, "ts":1780283671620045, "dur":118, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1780283671620210, "dur":250, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppInteropDataTable.cpp" }}
+,{ "pid":12345, "tid":3, "ts":1780283671620769, "dur":164, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/gc/WriteBarrier.h" }}
+,{ "pid":12345, "tid":3, "ts":1780283671621079, "dur":79, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/Internal/VerifyPlatformEnvironment.h" }}
+,{ "pid":12345, "tid":3, "ts":1780283671620464, "dur":948, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1780283671620164, "dur":1249, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/q5bpho7g3aua.o" }}
+,{ "pid":12345, "tid":3, "ts":1780283671621413, "dur":63, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1780283671621477, "dur":77, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Generics__4.cpp" }}
+,{ "pid":12345, "tid":3, "ts":1780283671621554, "dur":205, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Generics__4.cpp" }}
+,{ "pid":12345, "tid":3, "ts":1780283671621970, "dur":52, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-config.h" }}
+,{ "pid":12345, "tid":3, "ts":1780283671621764, "dur":296, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1780283671621477, "dur":584, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/nrv13zz9pjdb.o" }}
+,{ "pid":12345, "tid":3, "ts":1780283671622135, "dur":159, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/GenericMethods__2.cpp" }}
+,{ "pid":12345, "tid":3, "ts":1780283671622417, "dur":104, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/metadata/Il2CppGenericContextHash.h" }}
+,{ "pid":12345, "tid":3, "ts":1780283671622299, "dur":447, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1780283671622094, "dur":652, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/ex6x5zad70u2.o" }}
+,{ "pid":12345, "tid":3, "ts":1780283671622746, "dur":131, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1780283671622877, "dur":73, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1780283671586328, "dur":149, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1780283671586477, "dur":16371, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1780283671602855, "dur":165, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/__Generated_CodeGen.c" }}
+,{ "pid":12345, "tid":4, "ts":1780283671603020, "dur":2241, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/__Generated_CodeGen.c" }}
+,{ "pid":12345, "tid":4, "ts":1780283671605471, "dur":73, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool" }}
+,{ "pid":12345, "tid":4, "ts":1780283671605579, "dur":54, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++" }}
+,{ "pid":12345, "tid":4, "ts":1780283671605865, "dur":58, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-config-api.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671605932, "dur":71, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-class-internals.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671606080, "dur":51, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-pinvoke-support.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671605823, "dur":419, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1780283671602854, "dur":3388, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/2i6yr00k8rcp.o" }}
+,{ "pid":12345, "tid":4, "ts":1780283671606243, "dur":94, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1780283671606385, "dur":215, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/System.Core_CodeGen.c" }}
+,{ "pid":12345, "tid":4, "ts":1780283671606747, "dur":64, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++" }}
+,{ "pid":12345, "tid":4, "ts":1780283671606869, "dur":50, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/utils/StringView.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671606969, "dur":61, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-runtime-metadata.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671606869, "dur":455, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1780283671606337, "dur":987, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/9sk0efim6u9s.o" }}
+,{ "pid":12345, "tid":4, "ts":1780283671607324, "dur":82, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1780283671607407, "dur":69, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityICallRegistration.cpp" }}
+,{ "pid":12345, "tid":4, "ts":1780283671607406, "dur":73, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/yjzdr78o2xry.o" }}
+,{ "pid":12345, "tid":4, "ts":1780283671607504, "dur":66, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.PropertiesModule.cpp" }}
+,{ "pid":12345, "tid":4, "ts":1780283671607571, "dur":5988, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.PropertiesModule.cpp" }}
+,{ "pid":12345, "tid":4, "ts":1780283671613852, "dur":323, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/codegen/il2cpp-codegen-tiny.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671614175, "dur":80, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/utils/ExceptionSupportStack.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671614255, "dur":161, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_SystemSemaphore.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671614417, "dur":103, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/Cpp/ReentrantLock.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671613564, "dur":983, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1780283671607503, "dur":7044, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/xez5jffmiyre.o" }}
+,{ "pid":12345, "tid":4, "ts":1780283671614593, "dur":105, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/System.Xml.cpp" }}
+,{ "pid":12345, "tid":4, "ts":1780283671614698, "dur":159, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/System.Xml.cpp" }}
+,{ "pid":12345, "tid":4, "ts":1780283671615084, "dur":59, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++" }}
+,{ "pid":12345, "tid":4, "ts":1780283671615168, "dur":89, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk/dummy" }}
+,{ "pid":12345, "tid":4, "ts":1780283671615300, "dur":55, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_Atomic_TypeSafe.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671615356, "dur":85, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/metadata/Il2CppGenericInstHash.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671615479, "dur":52, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/MarshalAlloc.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671615590, "dur":243, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm-utils/VmStringUtils.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671615833, "dur":102, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/Internal/Compiler/CompilerEnvironmentClang.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671615936, "dur":57, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/Exception.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671616038, "dur":83, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/GenericClass.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671616479, "dur":51, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_SystemFutex.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671616625, "dur":61, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/gc/Allocator.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671616686, "dur":76, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/metadata/Il2CppGenericContextHash.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671616763, "dur":52, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/metadata/Il2CppGenericContextCompare.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671616844, "dur":55, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_Thread.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671616929, "dur":60, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/utils/Il2CppError.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671616989, "dur":172, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/Internal/BasicTypes.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671617198, "dur":68, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/utils/dynamic_array.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671617267, "dur":142, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_ErrorState.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671615257, "dur":2484, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1780283671614593, "dur":3148, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/74lwml7u5va5.o" }}
+,{ "pid":12345, "tid":4, "ts":1780283671617821, "dur":1046, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__15.cpp" }}
+,{ "pid":12345, "tid":4, "ts":1780283671619037, "dur":56, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/Internal/BasicTypes.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671618895, "dur":320, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1780283671617785, "dur":1430, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/wf4drulbgal2.o" }}
+,{ "pid":12345, "tid":4, "ts":1780283671619256, "dur":145, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib.cpp" }}
+,{ "pid":12345, "tid":4, "ts":1780283671619401, "dur":564, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib.cpp" }}
+,{ "pid":12345, "tid":4, "ts":1780283671620192, "dur":127, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/ClassInlines.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671620343, "dur":51, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/gc/Allocator.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671620781, "dur":155, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/icalls/mscorlib/Mono/RuntimeClassHandle.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671619970, "dur":1047, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1780283671619255, "dur":1763, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/sjb7ru61g0aa.o" }}
+,{ "pid":12345, "tid":4, "ts":1780283671621094, "dur":477, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Generics__8.cpp" }}
+,{ "pid":12345, "tid":4, "ts":1780283671621577, "dur":188, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-config-api.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671621766, "dur":98, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/metadata/Il2CppGenericInstHash.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671621976, "dur":101, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Internal/Compiler/Baselib_Atomic_Gcc_Patch.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671622111, "dur":91, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_Atomic.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671622229, "dur":141, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/Internal/Compiler/CompilerEnvironmentClang.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671622416, "dur":84, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/PlatformInvoke.h" }}
+,{ "pid":12345, "tid":4, "ts":1780283671621576, "dur":1217, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1780283671621062, "dur":1731, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/v26a4dp13zy8.o" }}
+,{ "pid":12345, "tid":4, "ts":1780283671622793, "dur":72, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1780283671622866, "dur":84, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1780283671586329, "dur":149, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1780283671586478, "dur":16378, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1780283671602863, "dur":154, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine_CodeGen.c" }}
+,{ "pid":12345, "tid":5, "ts":1780283671603017, "dur":2235, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine_CodeGen.c" }}
+,{ "pid":12345, "tid":5, "ts":1780283671602861, "dur":2677, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/msy0jfkuk27a.o" }}
+,{ "pid":12345, "tid":5, "ts":1780283671605539, "dur":73, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1780283671605614, "dur":125, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Unity.Burst_CodeGen.c" }}
+,{ "pid":12345, "tid":5, "ts":1780283671605739, "dur":296, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Unity.Burst_CodeGen.c" }}
+,{ "pid":12345, "tid":5, "ts":1780283671606248, "dur":64, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/c-api/il2cpp-config-platforms.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671606117, "dur":273, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1780283671605613, "dur":777, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/eyia07c6xo0e.o" }}
+,{ "pid":12345, "tid":5, "ts":1780283671606390, "dur":57, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1780283671606470, "dur":502, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib_CodeGen.c" }}
+,{ "pid":12345, "tid":5, "ts":1780283671607334, "dur":76, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-runtime-metadata.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671607234, "dur":248, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1780283671606447, "dur":1036, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/0u2mhajdg0u5.o" }}
+,{ "pid":12345, "tid":5, "ts":1780283671607512, "dur":54, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.GameCenterModule.cpp" }}
+,{ "pid":12345, "tid":5, "ts":1780283671607566, "dur":5779, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.GameCenterModule.cpp" }}
+,{ "pid":12345, "tid":5, "ts":1780283671613504, "dur":241, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/google/sparsehash/internal/libc_allocator_with_realloc.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671613846, "dur":323, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/google/sparsehash/internal/sparsehashtable.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671614170, "dur":73, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/utils/Memory.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671614243, "dur":126, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/String.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671614440, "dur":138, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/Internal/Compiler/CompilerEnvironmentGcc.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671614618, "dur":62, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/Thread.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671614707, "dur":163, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/codegen/il2cpp-codegen-tiny.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671613352, "dur":1557, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1780283671607512, "dur":7397, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/9k5rj0rfgi0p.o" }}
+,{ "pid":12345, "tid":5, "ts":1780283671614981, "dur":660, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/System.Core.cpp" }}
+,{ "pid":12345, "tid":5, "ts":1780283671615679, "dur":243, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/google/sparsehash/internal/libc_allocator_with_realloc.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671615923, "dur":56, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/utils/StringView.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671615979, "dur":55, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/ScopedThreadAttacher.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671616035, "dur":84, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-tokentype.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671616193, "dur":53, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/metadata/Il2CppGenericMethodCompare.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671616702, "dur":105, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_WakeupFallbackStrategy.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671615644, "dur":1234, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1780283671614945, "dur":1933, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/henqot20t4gi.o" }}
+,{ "pid":12345, "tid":5, "ts":1780283671616945, "dur":202, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__3.cpp" }}
+,{ "pid":12345, "tid":5, "ts":1780283671617204, "dur":189, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/MarshalAlloc.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671617923, "dur":123, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/Baselib.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671618423, "dur":53, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/utils/StringViewUtils.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671617151, "dur":1368, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1780283671616911, "dur":1608, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/5w0dkya3qmtr.o" }}
+,{ "pid":12345, "tid":5, "ts":1780283671618520, "dur":75, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1780283671618617, "dur":609, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__11.cpp" }}
+,{ "pid":12345, "tid":5, "ts":1780283671619227, "dur":59, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++" }}
+,{ "pid":12345, "tid":5, "ts":1780283671619414, "dur":59, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_SourceLocation.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671619757, "dur":139, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/utils/NonCopyable.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671619407, "dur":641, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1780283671618596, "dur":1453, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/o4s4qgwj2tz4.o" }}
+,{ "pid":12345, "tid":5, "ts":1780283671620072, "dur":66, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppReversePInvokeWrapperTable.cpp" }}
+,{ "pid":12345, "tid":5, "ts":1780283671620139, "dur":240, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppReversePInvokeWrapperTable.cpp" }}
+,{ "pid":12345, "tid":5, "ts":1780283671620511, "dur":77, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/PlatformInvoke.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671620767, "dur":114, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/Atomic.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671620385, "dur":747, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1780283671620071, "dur":1061, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/8jfipbn38i9l.o" }}
+,{ "pid":12345, "tid":5, "ts":1780283671621197, "dur":258, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Generics__7.cpp" }}
+,{ "pid":12345, "tid":5, "ts":1780283671621519, "dur":327, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1780283671621173, "dur":673, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/uumujy82zxht.o" }}
+,{ "pid":12345, "tid":5, "ts":1780283671621925, "dur":121, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Generics__1.cpp" }}
+,{ "pid":12345, "tid":5, "ts":1780283671622107, "dur":91, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-class-internals.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671622234, "dur":138, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/Array.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671622416, "dur":84, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_ReentrantLock.h" }}
+,{ "pid":12345, "tid":5, "ts":1780283671622050, "dur":685, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1780283671621878, "dur":857, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/go48n1qgg58s.o" }}
+,{ "pid":12345, "tid":5, "ts":1780283671622768, "dur":166, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1780283671586330, "dur":149, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1780283671586479, "dur":16386, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1780283671602870, "dur":124, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.SharedInternalsModule_CodeGen.c" }}
+,{ "pid":12345, "tid":6, "ts":1780283671602994, "dur":2241, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.SharedInternalsModule_CodeGen.c" }}
+,{ "pid":12345, "tid":6, "ts":1780283671605483, "dur":74, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-config-api.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671605557, "dur":56, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-tokentype.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671605623, "dur":121, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/c-api/il2cpp-config-platforms.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671605744, "dur":75, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-pinvoke-support.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671605464, "dur":488, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1780283671602869, "dur":3083, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/1ofo4skmnkqr.o" }}
+,{ "pid":12345, "tid":6, "ts":1780283671605952, "dur":163, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1780283671606141, "dur":253, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Unity.2D.Animation.Runtime_CodeGen.c" }}
+,{ "pid":12345, "tid":6, "ts":1780283671606723, "dur":59, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-blob.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671606539, "dur":246, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1780283671606115, "dur":670, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/exdgexfqyx09.o" }}
+,{ "pid":12345, "tid":6, "ts":1780283671606819, "dur":61, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppMetadataUsage.c" }}
+,{ "pid":12345, "tid":6, "ts":1780283671606818, "dur":85, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/9zyzazpq4gce.o" }}
+,{ "pid":12345, "tid":6, "ts":1780283671606943, "dur":74, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppGenericMethodDefinitions.c" }}
+,{ "pid":12345, "tid":6, "ts":1780283671607017, "dur":266, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppGenericMethodDefinitions.c" }}
+,{ "pid":12345, "tid":6, "ts":1780283671607328, "dur":74, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-object-internals.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671607593, "dur":170, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-sanitizers.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671607763, "dur":182, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-windowsruntime-types.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671607320, "dur":625, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1780283671606942, "dur":1003, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/v46ktqdwz1m8.o" }}
+,{ "pid":12345, "tid":6, "ts":1780283671607945, "dur":116, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1780283671608064, "dur":103, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.CoreModule.cpp" }}
+,{ "pid":12345, "tid":6, "ts":1780283671608167, "dur":5051, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.CoreModule.cpp" }}
+,{ "pid":12345, "tid":6, "ts":1780283671613224, "dur":190, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1780283671608063, "dur":5351, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/9uff1n2vfzcw.o" }}
+,{ "pid":12345, "tid":6, "ts":1780283671613414, "dur":60, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1780283671613497, "dur":251, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Unity.InternalAPIEngineBridge.001.cpp" }}
+,{ "pid":12345, "tid":6, "ts":1780283671613848, "dur":323, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool" }}
+,{ "pid":12345, "tid":6, "ts":1780283671614251, "dur":106, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++" }}
+,{ "pid":12345, "tid":6, "ts":1780283671614437, "dur":141, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/metadata/ArrayMetadata.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671614614, "dur":65, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/icalls/mscorlib/System.Runtime.InteropServices/Marshal.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671614703, "dur":63, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Internal/Baselib_EnumSizeCheck.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671614964, "dur":54, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/utils/ExceptionSupportStack.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671615088, "dur":52, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-runtime-metadata.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671615168, "dur":89, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-api-types.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671615298, "dur":55, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/codegen/il2cpp-codegen-metadata.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671615353, "dur":86, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/Internal/ArchitectureDetection.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671615477, "dur":52, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/MetadataCache.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671615589, "dur":222, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_WakeupFallbackStrategy.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671614358, "dur":1464, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1780283671613474, "dur":2348, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/twvivqay3q6e.o" }}
+,{ "pid":12345, "tid":6, "ts":1780283671615822, "dur":103, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1780283671615927, "dur":120, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__6.cpp" }}
+,{ "pid":12345, "tid":6, "ts":1780283671616047, "dur":1835, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__6.cpp" }}
+,{ "pid":12345, "tid":6, "ts":1780283671618420, "dur":53, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/Posix/ThreadLocalValueImpl.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671618636, "dur":53, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm-utils/Debugger.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671617952, "dur":1036, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1780283671615926, "dur":3063, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/ss8y42lx1e35.o" }}
+,{ "pid":12345, "tid":6, "ts":1780283671619030, "dur":53, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__1.cpp" }}
+,{ "pid":12345, "tid":6, "ts":1780283671619083, "dur":796, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__1.cpp" }}
+,{ "pid":12345, "tid":6, "ts":1780283671620133, "dur":50, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/Thread.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671620189, "dur":83, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_SystemSemaphore.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671620343, "dur":52, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/utils/StringViewUtils.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671619889, "dur":567, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1780283671619029, "dur":1427, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/z1t1ofi8ka6o.o" }}
+,{ "pid":12345, "tid":6, "ts":1780283671620528, "dur":293, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppCCFieldValuesTable.cpp" }}
+,{ "pid":12345, "tid":6, "ts":1780283671620830, "dur":295, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1780283671620495, "dur":630, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/xyzwmqvblpb2.o" }}
+,{ "pid":12345, "tid":6, "ts":1780283671621126, "dur":115, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1780283671621281, "dur":445, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Generics__6.cpp" }}
+,{ "pid":12345, "tid":6, "ts":1780283671621974, "dur":100, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-api-types.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671622104, "dur":61, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/codegen/il2cpp-codegen-metadata.h" }}
+,{ "pid":12345, "tid":6, "ts":1780283671621733, "dur":459, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1780283671621241, "dur":951, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/9ej63ou5w959.o" }}
+,{ "pid":12345, "tid":6, "ts":1780283671622255, "dur":408, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/GenericMethods__1.cpp" }}
+,{ "pid":12345, "tid":6, "ts":1780283671622685, "dur":163, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1780283671622217, "dur":632, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/th39pqwf4cjj.o" }}
+,{ "pid":12345, "tid":7, "ts":1780283671586332, "dur":148, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1780283671586480, "dur":16393, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1780283671602879, "dur":150, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.PropertiesModule_CodeGen.c" }}
+,{ "pid":12345, "tid":7, "ts":1780283671603029, "dur":2287, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.PropertiesModule_CodeGen.c" }}
+,{ "pid":12345, "tid":7, "ts":1780283671605473, "dur":72, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool" }}
+,{ "pid":12345, "tid":7, "ts":1780283671605593, "dur":51, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++" }}
+,{ "pid":12345, "tid":7, "ts":1780283671605778, "dur":51, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.5.sdk/dummy" }}
+,{ "pid":12345, "tid":7, "ts":1780283671605868, "dur":54, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-config-api.h" }}
+,{ "pid":12345, "tid":7, "ts":1780283671605975, "dur":54, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-class-internals.h" }}
+,{ "pid":12345, "tid":7, "ts":1780283671606074, "dur":54, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-windowsruntime-types.h" }}
+,{ "pid":12345, "tid":7, "ts":1780283671605829, "dur":299, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1780283671602878, "dur":3250, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/d4cm0itfxgbr.o" }}
+,{ "pid":12345, "tid":7, "ts":1780283671606128, "dur":102, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1780283671606256, "dur":388, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/System_CodeGen.c" }}
+,{ "pid":12345, "tid":7, "ts":1780283671606745, "dur":65, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-object-internals.h" }}
+,{ "pid":12345, "tid":7, "ts":1780283671606647, "dur":187, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1780283671606231, "dur":603, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/yx410hkvh0cz.o" }}
+,{ "pid":12345, "tid":7, "ts":1780283671606873, "dur":80, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppMetadataRegistration.c" }}
+,{ "pid":12345, "tid":7, "ts":1780283671606953, "dur":325, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppMetadataRegistration.c" }}
+,{ "pid":12345, "tid":7, "ts":1780283671607331, "dur":76, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-object-internals.h" }}
+,{ "pid":12345, "tid":7, "ts":1780283671607407, "dur":51, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-config.h" }}
+,{ "pid":12345, "tid":7, "ts":1780283671607318, "dur":264, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1780283671606873, "dur":709, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/3qocdt4mitjh.o" }}
+,{ "pid":12345, "tid":7, "ts":1780283671607582, "dur":176, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1780283671607759, "dur":228, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.CoreModule__1.cpp" }}
+,{ "pid":12345, "tid":7, "ts":1780283671607987, "dur":5199, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.CoreModule__1.cpp" }}
+,{ "pid":12345, "tid":7, "ts":1780283671613193, "dur":211, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1780283671607758, "dur":5646, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/en5bzjmo1i3b.o" }}
+,{ "pid":12345, "tid":7, "ts":1780283671613445, "dur":65, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityClassRegistration.cpp" }}
+,{ "pid":12345, "tid":7, "ts":1780283671613510, "dur":253, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityClassRegistration.cpp" }}
+,{ "pid":12345, "tid":7, "ts":1780283671613850, "dur":323, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool" }}
+,{ "pid":12345, "tid":7, "ts":1780283671614253, "dur":164, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++" }}
+,{ "pid":12345, "tid":7, "ts":1780283671613445, "dur":1111, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/vg7q5quqyqbo.o" }}
+,{ "pid":12345, "tid":7, "ts":1780283671614556, "dur":55, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1780283671614613, "dur":102, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/System.cpp" }}
+,{ "pid":12345, "tid":7, "ts":1780283671614715, "dur":1258, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/System.cpp" }}
+,{ "pid":12345, "tid":7, "ts":1780283671616032, "dur":85, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++" }}
+,{ "pid":12345, "tid":7, "ts":1780283671616197, "dur":52, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_Atomic_TypeSafe.h" }}
+,{ "pid":12345, "tid":7, "ts":1780283671616698, "dur":83, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm-utils/icalls/mscorlib/System.Threading/Interlocked.h" }}
+,{ "pid":12345, "tid":7, "ts":1780283671616919, "dur":59, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/gc/Allocator.h" }}
+,{ "pid":12345, "tid":7, "ts":1780283671616149, "dur":988, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1780283671614612, "dur":2525, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/qaoj05yooodp.o" }}
+,{ "pid":12345, "tid":7, "ts":1780283671617185, "dur":100, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__2.cpp" }}
+,{ "pid":12345, "tid":7, "ts":1780283671617285, "dur":287, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__2.cpp" }}
+,{ "pid":12345, "tid":7, "ts":1780283671618153, "dur":50, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/google/sparsehash/internal/densehashtable.h" }}
+,{ "pid":12345, "tid":7, "ts":1780283671617671, "dur":713, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1780283671617184, "dur":1200, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/khxp4ow5nyh8.o" }}
+,{ "pid":12345, "tid":7, "ts":1780283671618384, "dur":78, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1780283671618512, "dur":1520, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__12.cpp" }}
+,{ "pid":12345, "tid":7, "ts":1780283671620192, "dur":126, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/metadata/ArrayMetadata.h" }}
+,{ "pid":12345, "tid":7, "ts":1780283671620038, "dur":684, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1780283671618463, "dur":2259, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/pcdlbwci6vgk.o" }}
+,{ "pid":12345, "tid":7, "ts":1780283671620799, "dur":214, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppCCalculateFieldValues.cpp" }}
+,{ "pid":12345, "tid":7, "ts":1780283671621067, "dur":376, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1780283671620750, "dur":693, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/07nq1bdhx4ga.o" }}
+,{ "pid":12345, "tid":7, "ts":1780283671621444, "dur":95, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1780283671621541, "dur":76, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Generics__2.cpp" }}
+,{ "pid":12345, "tid":7, "ts":1780283671621618, "dur":153, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Generics__2.cpp" }}
+,{ "pid":12345, "tid":7, "ts":1780283671621972, "dur":95, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-tokentype.h" }}
+,{ "pid":12345, "tid":7, "ts":1780283671622107, "dur":61, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/Posix/ThreadLocalValueImpl.h" }}
+,{ "pid":12345, "tid":7, "ts":1780283671622229, "dur":135, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-string-types.h" }}
+,{ "pid":12345, "tid":7, "ts":1780283671622414, "dur":83, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-runtime-metadata.h" }}
+,{ "pid":12345, "tid":7, "ts":1780283671621776, "dur":778, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1780283671621540, "dur":1014, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/137w3a5djtkc.o" }}
+,{ "pid":12345, "tid":7, "ts":1780283671622554, "dur":128, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1780283671622683, "dur":250, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1780283671586333, "dur":148, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1780283671586481, "dur":16402, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1780283671602889, "dur":142, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.IMGUIModule_CodeGen.c" }}
+,{ "pid":12345, "tid":8, "ts":1780283671603031, "dur":2122, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.IMGUIModule_CodeGen.c" }}
+,{ "pid":12345, "tid":8, "ts":1780283671605558, "dur":56, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++" }}
+,{ "pid":12345, "tid":8, "ts":1780283671605623, "dur":142, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-object-internals.h" }}
+,{ "pid":12345, "tid":8, "ts":1780283671605790, "dur":51, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-class-internals.h" }}
+,{ "pid":12345, "tid":8, "ts":1780283671605616, "dur":232, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1780283671602888, "dur":2961, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/7khgslumzizt.o" }}
+,{ "pid":12345, "tid":8, "ts":1780283671605849, "dur":72, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1780283671605965, "dur":208, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Unity.Burst.Unsafe_CodeGen.c" }}
+,{ "pid":12345, "tid":8, "ts":1780283671606240, "dur":65, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-metadata.h" }}
+,{ "pid":12345, "tid":8, "ts":1780283671606235, "dur":171, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1780283671605922, "dur":484, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/smbejhoa9puf.o" }}
+,{ "pid":12345, "tid":8, "ts":1780283671606439, "dur":64, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/System.Configuration_CodeGen.c" }}
+,{ "pid":12345, "tid":8, "ts":1780283671606503, "dur":379, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/System.Configuration_CodeGen.c" }}
+,{ "pid":12345, "tid":8, "ts":1780283671606438, "dur":458, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/ma8z8cvto99t.o" }}
+,{ "pid":12345, "tid":8, "ts":1780283671606927, "dur":69, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppGenericMethodTable.c" }}
+,{ "pid":12345, "tid":8, "ts":1780283671606996, "dur":184, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppGenericMethodTable.c" }}
+,{ "pid":12345, "tid":8, "ts":1780283671607337, "dur":74, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/c-api/il2cpp-config-api-platforms.h" }}
+,{ "pid":12345, "tid":8, "ts":1780283671607182, "dur":307, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1780283671606927, "dur":562, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/two0fze8ljid.o" }}
+,{ "pid":12345, "tid":8, "ts":1780283671607489, "dur":70, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1780283671607560, "dur":218, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.cpp" }}
+,{ "pid":12345, "tid":8, "ts":1780283671607779, "dur":6081, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.cpp" }}
+,{ "pid":12345, "tid":8, "ts":1780283671614177, "dur":81, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++" }}
+,{ "pid":12345, "tid":8, "ts":1780283671614421, "dur":132, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool" }}
+,{ "pid":12345, "tid":8, "ts":1780283671614600, "dur":76, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_SourceLocation.h" }}
+,{ "pid":12345, "tid":8, "ts":1780283671615165, "dur":75, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/MetadataCache.h" }}
+,{ "pid":12345, "tid":8, "ts":1780283671614556, "dur":761, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1780283671607559, "dur":7759, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/aqffehr9dnic.o" }}
+,{ "pid":12345, "tid":8, "ts":1780283671615318, "dur":86, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1780283671615406, "dur":53, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__7.cpp" }}
+,{ "pid":12345, "tid":8, "ts":1780283671615459, "dur":2576, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__7.cpp" }}
+,{ "pid":12345, "tid":8, "ts":1780283671618418, "dur":58, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/ThreadLocalValue.h" }}
+,{ "pid":12345, "tid":8, "ts":1780283671618654, "dur":57, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-class-internals.h" }}
+,{ "pid":12345, "tid":8, "ts":1780283671618901, "dur":112, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_ErrorCode.h" }}
+,{ "pid":12345, "tid":8, "ts":1780283671619043, "dur":59, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Internal/Baselib_Lock_FutexBased.inl.h" }}
+,{ "pid":12345, "tid":8, "ts":1780283671619136, "dur":95, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Internal/Baselib_CappedSemaphore_SemaphoreBased.inl.h" }}
+,{ "pid":12345, "tid":8, "ts":1780283671619231, "dur":134, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/Il2CppHStringReference.h" }}
+,{ "pid":12345, "tid":8, "ts":1780283671619366, "dur":55, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/Memory.h" }}
+,{ "pid":12345, "tid":8, "ts":1780283671619422, "dur":59, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/Atomic.h" }}
+,{ "pid":12345, "tid":8, "ts":1780283671619508, "dur":51, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/ClassInlines.h" }}
+,{ "pid":12345, "tid":8, "ts":1780283671619770, "dur":226, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_Thread.h" }}
+,{ "pid":12345, "tid":8, "ts":1780283671618104, "dur":2180, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1780283671615405, "dur":4880, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/d8bnkc0u42ep.o" }}
+,{ "pid":12345, "tid":8, "ts":1780283671620285, "dur":121, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1780283671620449, "dur":374, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppCCTypeValuesTable.cpp" }}
+,{ "pid":12345, "tid":8, "ts":1780283671620830, "dur":299, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1780283671620406, "dur":723, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/xu5wrs94rph3.o" }}
+,{ "pid":12345, "tid":8, "ts":1780283671621130, "dur":179, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1780283671621338, "dur":182, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Generics__5.cpp" }}
+,{ "pid":12345, "tid":8, "ts":1780283671621621, "dur":197, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1780283671621310, "dur":508, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/ozfiofg8tluq.o" }}
+,{ "pid":12345, "tid":8, "ts":1780283671621818, "dur":140, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1780283671621996, "dur":291, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Generics.cpp" }}
+,{ "pid":12345, "tid":8, "ts":1780283671622410, "dur":75, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/ScopedThreadAttacher.h" }}
+,{ "pid":12345, "tid":8, "ts":1780283671622292, "dur":292, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1780283671621959, "dur":625, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/z770mmau94ni.o" }}
+,{ "pid":12345, "tid":8, "ts":1780283671622635, "dur":302, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1780283671586334, "dur":148, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1780283671586482, "dur":16411, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1780283671602897, "dur":121, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.GameCenterModule_CodeGen.c" }}
+,{ "pid":12345, "tid":9, "ts":1780283671603018, "dur":2323, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.GameCenterModule_CodeGen.c" }}
+,{ "pid":12345, "tid":9, "ts":1780283671602896, "dur":2478, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/9llb7udzgxku.o" }}
+,{ "pid":12345, "tid":9, "ts":1780283671605420, "dur":61, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Unity.Mathematics_CodeGen.c" }}
+,{ "pid":12345, "tid":9, "ts":1780283671605481, "dur":395, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Unity.Mathematics_CodeGen.c" }}
+,{ "pid":12345, "tid":9, "ts":1780283671605937, "dur":74, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++" }}
+,{ "pid":12345, "tid":9, "ts":1780283671606240, "dur":63, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/codegen/il2cpp-codegen-metadata.h" }}
+,{ "pid":12345, "tid":9, "ts":1780283671606232, "dur":293, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1780283671605419, "dur":1106, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/c43l82f3xi65.o" }}
+,{ "pid":12345, "tid":9, "ts":1780283671606526, "dur":66, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1780283671606629, "dur":417, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppTypeDefinitions.c" }}
+,{ "pid":12345, "tid":9, "ts":1780283671607049, "dur":207, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1780283671606593, "dur":663, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/x3n7ol164vls.o" }}
+,{ "pid":12345, "tid":9, "ts":1780283671607256, "dur":58, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1780283671607315, "dur":82, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/__Generated.cpp" }}
+,{ "pid":12345, "tid":9, "ts":1780283671607397, "dur":6163, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/__Generated.cpp" }}
+,{ "pid":12345, "tid":9, "ts":1780283671613565, "dur":177, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1780283671607315, "dur":6437, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/awsziqvowru0.o" }}
+,{ "pid":12345, "tid":9, "ts":1780283671613752, "dur":80, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1780283671613876, "dur":101, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Unity.Burst.Unsafe.cpp" }}
+,{ "pid":12345, "tid":9, "ts":1780283671613984, "dur":164, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1780283671613833, "dur":315, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/4ifryhf0k7ab.o" }}
+,{ "pid":12345, "tid":9, "ts":1780283671614148, "dur":66, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1780283671614216, "dur":60, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Unity.Burst.cpp" }}
+,{ "pid":12345, "tid":9, "ts":1780283671614276, "dur":69, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Unity.Burst.cpp" }}
+,{ "pid":12345, "tid":9, "ts":1780283671614350, "dur":51, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_Atomic_TypeSafe.h" }}
+,{ "pid":12345, "tid":9, "ts":1780283671614405, "dur":96, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_SourceLocation.h" }}
+,{ "pid":12345, "tid":9, "ts":1780283671614501, "dur":83, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/MarshalAlloc.h" }}
+,{ "pid":12345, "tid":9, "ts":1780283671614618, "dur":51, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/Internal/CoreMacros.h" }}
+,{ "pid":12345, "tid":9, "ts":1780283671614700, "dur":59, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/Exception.h" }}
+,{ "pid":12345, "tid":9, "ts":1780283671614349, "dur":773, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1780283671614215, "dur":907, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/io86n0e2a664.o" }}
+,{ "pid":12345, "tid":9, "ts":1780283671615159, "dur":96, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__9.cpp" }}
+,{ "pid":12345, "tid":9, "ts":1780283671615256, "dur":407, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__9.cpp" }}
+,{ "pid":12345, "tid":9, "ts":1780283671615666, "dur":162, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1780283671615159, "dur":669, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/zvzrk1uqbt7n.o" }}
+,{ "pid":12345, "tid":9, "ts":1780283671615828, "dur":132, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1780283671615962, "dur":68, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__5.cpp" }}
+,{ "pid":12345, "tid":9, "ts":1780283671616030, "dur":1100, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__5.cpp" }}
+,{ "pid":12345, "tid":9, "ts":1780283671617217, "dur":193, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/Internal/Compiler/CompilerEnvironmentMsvc.h" }}
+,{ "pid":12345, "tid":9, "ts":1780283671617138, "dur":880, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1780283671615961, "dur":2058, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/rkoikn5yxcmq.o" }}
+,{ "pid":12345, "tid":9, "ts":1780283671618085, "dur":901, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__14.cpp" }}
+,{ "pid":12345, "tid":9, "ts":1780283671619129, "dur":82, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Internal/Baselib_CappedSemaphore_SemaphoreBased.inl.h" }}
+,{ "pid":12345, "tid":9, "ts":1780283671619282, "dur":120, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/Baselib.h" }}
+,{ "pid":12345, "tid":9, "ts":1780283671618993, "dur":498, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1780283671618059, "dur":1432, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/v7jx6e5cc83m.o" }}
+,{ "pid":12345, "tid":9, "ts":1780283671619491, "dur":167, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1780283671619700, "dur":362, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Mono.Security.cpp" }}
+,{ "pid":12345, "tid":9, "ts":1780283671620431, "dur":51, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/Mutex.h" }}
+,{ "pid":12345, "tid":9, "ts":1780283671620514, "dur":86, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/MetadataCache.h" }}
+,{ "pid":12345, "tid":9, "ts":1780283671620103, "dur":542, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1780283671619659, "dur":987, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/azwcosahx55u.o" }}
+,{ "pid":12345, "tid":9, "ts":1780283671620717, "dur":208, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppCCalculateTypeValues.cpp" }}
+,{ "pid":12345, "tid":9, "ts":1780283671620981, "dur":63, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_SourceLocation.h" }}
+,{ "pid":12345, "tid":9, "ts":1780283671621076, "dur":81, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/Exception.h" }}
+,{ "pid":12345, "tid":9, "ts":1780283671621407, "dur":53, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/String.h" }}
+,{ "pid":12345, "tid":9, "ts":1780283671621585, "dur":280, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/google/sparsehash/internal/sparseconfig.h" }}
+,{ "pid":12345, "tid":9, "ts":1780283671621865, "dur":52, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/codegen/il2cpp-codegen-il2cpp.h" }}
+,{ "pid":12345, "tid":9, "ts":1780283671621977, "dur":100, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/Thread.h" }}
+,{ "pid":12345, "tid":9, "ts":1780283671622107, "dur":93, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-string-types.h" }}
+,{ "pid":12345, "tid":9, "ts":1780283671622238, "dur":136, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/utils/ExceptionSupportStack.h" }}
+,{ "pid":12345, "tid":9, "ts":1780283671622422, "dur":197, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/Cpp/ReentrantLock.h" }}
+,{ "pid":12345, "tid":9, "ts":1780283671620934, "dur":1809, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1780283671620670, "dur":2074, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/u25s6xfiy3bs.o" }}
+,{ "pid":12345, "tid":9, "ts":1780283671622744, "dur":135, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":9, "ts":1780283671622879, "dur":76, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1780283671586336, "dur":147, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1780283671586483, "dur":16419, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1780283671602925, "dur":105, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.CoreModule_CodeGen.c" }}
+,{ "pid":12345, "tid":10, "ts":1780283671603030, "dur":2229, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.CoreModule_CodeGen.c" }}
+,{ "pid":12345, "tid":10, "ts":1780283671602924, "dur":2606, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/970a2whgobsr.o" }}
+,{ "pid":12345, "tid":10, "ts":1780283671605576, "dur":199, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Unity.Collections_CodeGen.c" }}
+,{ "pid":12345, "tid":10, "ts":1780283671605775, "dur":342, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Unity.Collections_CodeGen.c" }}
+,{ "pid":12345, "tid":10, "ts":1780283671606243, "dur":63, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-tokentype.h" }}
+,{ "pid":12345, "tid":10, "ts":1780283671606185, "dur":457, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1780283671605576, "dur":1067, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/vvwhzbezhmu2.o" }}
+,{ "pid":12345, "tid":10, "ts":1780283671606644, "dur":66, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1780283671606712, "dur":85, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppRgctxTable.c" }}
+,{ "pid":12345, "tid":10, "ts":1780283671606797, "dur":91, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppRgctxTable.c" }}
+,{ "pid":12345, "tid":10, "ts":1780283671606711, "dur":191, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/7ekhwhebftv2.o" }}
+,{ "pid":12345, "tid":10, "ts":1780283671606935, "dur":72, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppGenericMethodPointerTable.c" }}
+,{ "pid":12345, "tid":10, "ts":1780283671607007, "dur":98, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppGenericMethodPointerTable.c" }}
+,{ "pid":12345, "tid":10, "ts":1780283671606934, "dur":253, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/she04wgae21w.o" }}
+,{ "pid":12345, "tid":10, "ts":1780283671607211, "dur":54, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppGenericClassTable.c" }}
+,{ "pid":12345, "tid":10, "ts":1780283671607265, "dur":319, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppGenericClassTable.c" }}
+,{ "pid":12345, "tid":10, "ts":1780283671607591, "dur":170, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/codegen/il2cpp-codegen-metadata.h" }}
+,{ "pid":12345, "tid":10, "ts":1780283671607761, "dur":184, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-object-internals.h" }}
+,{ "pid":12345, "tid":10, "ts":1780283671607945, "dur":61, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-config.h" }}
+,{ "pid":12345, "tid":10, "ts":1780283671608126, "dur":72, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/c-api/il2cpp-config-platforms.h" }}
+,{ "pid":12345, "tid":10, "ts":1780283671607587, "dur":729, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1780283671607211, "dur":1105, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/cin8ddein3t5.o" }}
+,{ "pid":12345, "tid":10, "ts":1780283671608316, "dur":68, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1780283671608404, "dur":5150, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/UnityEngine.AudioModule.cpp" }}
+,{ "pid":12345, "tid":10, "ts":1780283671613570, "dur":157, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1780283671608384, "dur":5344, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/mgft1z3jil0m.o" }}
+,{ "pid":12345, "tid":10, "ts":1780283671613804, "dur":203, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Unity.Collections.cpp" }}
+,{ "pid":12345, "tid":10, "ts":1780283671614012, "dur":108, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/metadata/Il2CppGenericInstHash.h" }}
+,{ "pid":12345, "tid":10, "ts":1780283671614163, "dur":77, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/metadata/Il2CppGenericContextHash.h" }}
+,{ "pid":12345, "tid":10, "ts":1780283671614240, "dur":53, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/metadata/Il2CppGenericContextCompare.h" }}
+,{ "pid":12345, "tid":10, "ts":1780283671614010, "dur":376, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1780283671613772, "dur":614, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/ngkqfwbgql0l.o" }}
+,{ "pid":12345, "tid":10, "ts":1780283671614433, "dur":231, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Unity.2D.Animation.Runtime.cpp" }}
+,{ "pid":12345, "tid":10, "ts":1780283671614664, "dur":212, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Unity.2D.Animation.Runtime.cpp" }}
+,{ "pid":12345, "tid":10, "ts":1780283671614889, "dur":344, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1780283671614432, "dur":801, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/u8nya66croyx.o" }}
+,{ "pid":12345, "tid":10, "ts":1780283671615315, "dur":1482, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__8.cpp" }}
+,{ "pid":12345, "tid":10, "ts":1780283671616922, "dur":64, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/Il2CppHStringReference.h" }}
+,{ "pid":12345, "tid":10, "ts":1780283671616802, "dur":383, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1780283671615275, "dur":1910, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/ynfb0les7qq8.o" }}
+,{ "pid":12345, "tid":10, "ts":1780283671617185, "dur":85, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1780283671617272, "dur":186, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__17.cpp" }}
+,{ "pid":12345, "tid":10, "ts":1780283671617458, "dur":560, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/mscorlib__17.cpp" }}
+,{ "pid":12345, "tid":10, "ts":1780283671618424, "dur":56, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-sanitizers.h" }}
+,{ "pid":12345, "tid":10, "ts":1780283671618605, "dur":69, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/utils/NonCopyable.h" }}
+,{ "pid":12345, "tid":10, "ts":1780283671619042, "dur":58, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/Win32/ThreadLocalValueImpl.h" }}
+,{ "pid":12345, "tid":10, "ts":1780283671619136, "dur":94, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/codegen/il2cpp-codegen.h" }}
+,{ "pid":12345, "tid":10, "ts":1780283671619230, "dur":63, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/utils/Output.h" }}
+,{ "pid":12345, "tid":10, "ts":1780283671619293, "dur":128, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/google/sparsehash/internal/densehashtable.h" }}
+,{ "pid":12345, "tid":10, "ts":1780283671619421, "dur":58, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/os/c-api/WaitStatus-c-api.h" }}
+,{ "pid":12345, "tid":10, "ts":1780283671619507, "dur":51, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/il2cpp-pinvoke-support.h" }}
+,{ "pid":12345, "tid":10, "ts":1780283671618024, "dur":1615, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1780283671617271, "dur":2369, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/i3rirjg7m0d1.o" }}
+,{ "pid":12345, "tid":10, "ts":1780283671619640, "dur":100, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1780283671619741, "dur":59, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppUnresolvedIndirectCallStubs.cpp" }}
+,{ "pid":12345, "tid":10, "ts":1780283671619801, "dur":155, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppUnresolvedIndirectCallStubs.cpp" }}
+,{ "pid":12345, "tid":10, "ts":1780283671619965, "dur":341, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1780283671619740, "dur":566, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/vcfgkbyjsul3.o" }}
+,{ "pid":12345, "tid":10, "ts":1780283671620354, "dur":380, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Il2CppCodeRegistration.cpp" }}
+,{ "pid":12345, "tid":10, "ts":1780283671620983, "dur":61, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/google/sparsehash/internal/sparsehashtable.h" }}
+,{ "pid":12345, "tid":10, "ts":1780283671621081, "dur":82, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/libil2cpp/vm/String.h" }}
+,{ "pid":12345, "tid":10, "ts":1780283671620756, "dur":620, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1780283671620331, "dur":1046, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/xfb7n8qdfy1y.o" }}
+,{ "pid":12345, "tid":10, "ts":1780283671621377, "dur":139, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1780283671621566, "dur":259, "ph":"X", "name": "ScanImplicitDeps",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/Source/il2cppOutput/Generics__3.cpp" }}
+,{ "pid":12345, "tid":10, "ts":1780283671621973, "dur":95, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Platforms/IOS/Include/C/Baselib_ErrorState.inl.h" }}
+,{ "pid":12345, "tid":10, "ts":1780283671622101, "dur":54, "ph":"X", "name": "ComputeFileSignatureSha1",  "args": { "detail":"/Users/kksoft/mobile-sdk-ios/UnityExample/iOS/Il2CppOutputProject/IL2CPP/external/baselib/Include/C/Baselib_ErrorCode.h" }}
+,{ "pid":12345, "tid":10, "ts":1780283671621830, "dur":523, "ph":"X", "name": "ImplicitDepsSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1780283671621517, "dur":836, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"C_iOS_arm64 z7ln/2bsdoqlcnv1r.o" }}
+,{ "pid":12345, "tid":10, "ts":1780283671622393, "dur":91, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":10, "ts":1780283671622484, "dur":483, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1780283671624902, "dur":331, "ph":"X", "name": "ProfilerWriteOutput" }
+,{ "pid": 17158, "tid": 1, "ts": 1780283671650753, "dur": 887, "ph": "X", "name": "Wait for external events", "args": {"First to finish": "backend_profiler0.traceevents"} },
+{ "pid": 17158, "tid": 1, "ts": 1780283671651668, "dur": 405, "ph": "X", "name": "backend_profiler0.traceevents", "args": {} },
+{ "pid": 17158, "tid": 1, "ts": 1780283671648201, "dur": 4573, "ph": "X", "name": "Write chrome-trace events", "args": {} },
+{ "pid": 17158, "tid": 1, "ts": 1780283671669190, "dur": 4963, "ph": "X", "name": "Write chrome-trace events", "args": {} },
+{}
+
+]
+}
