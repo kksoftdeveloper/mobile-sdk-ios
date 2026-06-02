@@ -37,11 +37,7 @@ final class PhonePasswordLoginManager: UsernamePasswordLoginManager, DeviceIdent
                     .eraseToAnyPublisher()
             }
             
-            guard let serverId = gameInfoStorage.serverID else {
-                Analytics.track(event: self.phoneLogin, properties: [self.failure: AuthErrorResponse.appNotConfiguredGameServer().message])
-                return Fail(error: AuthErrorResponse.appNotConfiguredGameServer())
-                    .eraseToAnyPublisher()
-            }
+            let serverId = gameInfoStorage.serverID
             
             guard let appVersion = gameInfoStorage.appVersion, !appVersion.isEmpty else {
                 Analytics.track(event: self.phoneLogin, properties: [self.failure: AuthErrorResponse.sdkNotInitialized().message])
@@ -78,7 +74,12 @@ final class PhonePasswordLoginManager: UsernamePasswordLoginManager, DeviceIdent
                     return model.toResponse()
                 }
                 .flatMap { sessionResponse -> AnyPublisher<AuthSessionResponse, Error> in
-                    self.getCharacter(gameId: gameId, serverId: serverId)
+                    guard let serverId else {
+                        return Just(sessionResponse)
+                            .setFailureType(to: Error.self)
+                            .eraseToAnyPublisher()
+                    }
+                    return self.getCharacter(gameId: gameId, serverId: serverId)
                         .map { sessionResponse }
                         .catch { _ in Just(sessionResponse).setFailureType(to: Error.self) }
                         .eraseToAnyPublisher()
@@ -208,7 +209,7 @@ struct PhoneLoginRequestBody: Encodable {
     let phone: String
     let password: String
     let gameId: Int
-    let serverId: Int
+    let serverId: Int?
     let deviceId: String
     let sign: String
     

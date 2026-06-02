@@ -22,14 +22,31 @@ struct GoogleLoginParameters: ValidatedLoginParameters {
 
 extension GoogleLoginParameters {
     static func fromSensitiveData() throws -> GoogleLoginParameters {
-        guard let clientID = try SensitiveDataManager.shared.get(for: .googleClientID) else {
+        let infoDictionary = Bundle.main.infoDictionary
+        let storedClientID = try SensitiveDataManager.shared.get(for: .googleClientID)
+        let storedURLSchema = try SensitiveDataManager.shared.get(for: .googleURLSchema)
+
+        guard let clientID = [storedClientID, infoDictionary?["GIDClientID"] as? String]
+            .compactMap({ $0?.configuredValue })
+            .first else {
             throw ValidationError.googleClientIDMissing
         }
-        
-        guard let urlSchema = try SensitiveDataManager.shared.get(for: .googleURLSchema) else {
+
+        let configuredURLSchema = (infoDictionary?["GIDReversedClientID"] as? String)?.configuredValue
+        guard let urlSchema = [storedURLSchema, configuredURLSchema, googleURLSchema(from: infoDictionary)]
+            .compactMap({ $0?.configuredValue })
+            .first else {
             throw ValidationError.googleSchemaURLMissing
         }
-        
+
         return GoogleLoginParameters(clientID: clientID, clientURLSchema: urlSchema)
+    }
+
+    private static func googleURLSchema(from infoDictionary: [String: Any]?) -> String? {
+        let urlTypes = infoDictionary?["CFBundleURLTypes"] as? [[String: Any]]
+        let schemes = urlTypes?
+            .compactMap { $0["CFBundleURLSchemes"] as? [String] }
+            .flatMap { $0 }
+        return schemes?.first(where: { $0.hasPrefix("com.googleusercontent.apps.") })
     }
 }

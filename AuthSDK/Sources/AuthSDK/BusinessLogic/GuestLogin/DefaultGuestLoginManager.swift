@@ -41,11 +41,7 @@ final class DefaultGuestLoginManager: GuestLoginManager, DeviceIdentifiable, SDK
                 .eraseToAnyPublisher()
         }
         
-        guard let serverId = gameInfoStorage.serverID else {
-            Analytics.track(event: self.guestLogin, properties: [self.failure: AuthErrorResponse.appNotConfiguredGameServer().message])
-            return Fail(error: AuthErrorResponse.appNotConfiguredGameServer())
-                .eraseToAnyPublisher()
-        }
+        let serverId = gameInfoStorage.serverID
         
         guard let sign = try? signature.sign(type: "guest") else {
             Analytics.track(event: self.guestLogin, properties: [self.failure: AuthErrorResponse.sdkSignatureError().message])
@@ -193,7 +189,7 @@ struct GuestLoginRequestBody: Encodable {
     let provider: String = "guest"
     let deviceId: String
     let gameId: Int
-    let serverId: Int
+    let serverId: Int?
     let platform: String
     let sdkVersion: String
     let appVersion: String

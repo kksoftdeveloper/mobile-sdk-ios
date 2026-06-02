@@ -53,7 +53,7 @@ public struct AuthServiceProvider: AuthServiceProviderType {
         
         self.emailPasswordLoginManager = builder.emailPasswordLoginManager ?? EmailPasswordLoginManager(authAPIClient: authAPIClient)
         
-        self.phonePasswordLoginManager = builder.phonePasswordLoginManager ?? EmailPasswordLoginManager(authAPIClient: authAPIClient)
+        self.phonePasswordLoginManager = builder.phonePasswordLoginManager ?? PhonePasswordLoginManager(authAPIClient: authAPIClient)
         
         self.googleLoginManager = builder.googleLoginManager ?? GoogleLoginManager(authAPIClient: authAPIClient)
         

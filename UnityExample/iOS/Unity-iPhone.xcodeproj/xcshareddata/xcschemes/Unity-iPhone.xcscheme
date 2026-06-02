@@ -75,6 +75,9 @@
             ReferencedContainer = "container:Unity-iPhone.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <StoreKitConfigurationFileReference
+         identifier = "../../Classes/K-Utility.storekit">
+      </StoreKitConfigurationFileReference>
       <CommandLineArguments>
          <CommandLineArgument
             argument = "-FIRAnalyticsDebugEnabled"

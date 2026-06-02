@@ -26,7 +26,7 @@ final class AppleLoginManager: NSObject,
     private var cancellables = Set<AnyCancellable>()
     
     /// Subject that emits exactly one identityToken (String) or a failure.
-    private let tokenSubject = PassthroughSubject<String, Error>()
+    private var tokenSubject = PassthroughSubject<String, Error>()
 
     init(authAPIClient: AuthAPIClient,
          sessionManager: SessionManager = KeyChainSessionManager(),
@@ -44,6 +44,9 @@ final class AppleLoginManager: NSObject,
     }
     
     func login() -> AnyPublisher<AuthSessionResponse, any Error> {
+        let tokenSubject = PassthroughSubject<String, Error>()
+        self.tokenSubject = tokenSubject
+
         // 1) Wire up Apple callbacks — when Apple returns,
         //    our ASAuthorizationControllerDelegate methods will feed into `tokenSubject`.
         AppleSignInController.shared.delegate = self
@@ -127,17 +130,7 @@ final class AppleLoginManager: NSObject,
                     .eraseToAnyPublisher()
                 }
                 
-                guard let serverId = self.gameInfoStorage.serverID
-                else {
-                    Analytics.track(
-                        event: self.appleLogin,
-                        properties: [ self.failure: AuthErrorResponse.appNotConfiguredGameServer().message ]
-                    )
-                    return Fail<AuthSessionResponse, Error>(
-                        error: AuthErrorResponse.appNotConfiguredGameServer() as Error
-                    )
-                    .eraseToAnyPublisher()
-                }
+                let serverId = self.gameInfoStorage.serverID
 
                 // 4b) Compute the `sign` string using your existing Signature API
                 let sign: String
@@ -192,6 +185,11 @@ final class AppleLoginManager: NSObject,
                     }
                     .mapError { $0 as Error }
                     .flatMap { sessionResponse -> AnyPublisher<AuthSessionResponse, Error> in
+                        guard let serverId else {
+                            return Just(sessionResponse)
+                                .setFailureType(to: Error.self)
+                                .eraseToAnyPublisher()
+                        }
                         return self.authAPIClient
                             .getCharacter(header: [:], gameId: gameId, serverId: serverId)
                             .map { gameUidResponse in
@@ -384,14 +382,7 @@ final class AppleLoginManager: NSObject,
     public func presentationAnchor(
         for controller: ASAuthorizationController
     ) -> ASPresentationAnchor {
-        // Find the key window of the active scene
-        let scenes = UIApplication.shared.connectedScenes
-        let windowScene = scenes
-            .first { $0.activationState == .foregroundActive } as? UIWindowScene
-        
-        return windowScene?
-            .windows
-            .first { $0.isKeyWindow } ?? ASPresentationAnchor()
+        UIApplication.shared.authSDKKeyWindow ?? ASPresentationAnchor()
     }
 }
 
@@ -426,7 +417,7 @@ fileprivate struct AppleLoginRequestBody: Encodable {
     let oauthToken: String
     let deviceId: String
     let gameId: Int
-    let serverId: Int
+    let serverId: Int?
     let platform: String
     let sdkVersion: String
     let appVersion: String

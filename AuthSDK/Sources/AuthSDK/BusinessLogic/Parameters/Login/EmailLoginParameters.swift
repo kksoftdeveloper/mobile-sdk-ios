@@ -17,6 +17,9 @@ struct EmailLoginParameters: ValidatedLoginParameters {
         guard !password.isEmpty else {
             throw ValidationError.passwordIsEmpty
         }
+        guard password.isStrongPassword() else {
+            throw ValidationError.passwordIsTooShort
+        }
         guard email.isValidEmail() else {
             throw ValidationError.phoneIsEmpty
         }

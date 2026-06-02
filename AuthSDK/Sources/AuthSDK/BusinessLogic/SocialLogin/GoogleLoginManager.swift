@@ -66,10 +66,7 @@ final class GoogleLoginManager: SocialLoginManager, DeviceIdentifiable, SDKInfo,
                     return
                 }
                 
-                guard let presentingVC = UIApplication.shared.connectedScenes
-                    .compactMap({ $0 as? UIWindowScene })
-                    .flatMap({ $0.windows })
-                    .first(where: { $0.isKeyWindow })?.rootViewController else {
+                guard let presentingVC = UIApplication.shared.authSDKTopViewController else {
                     Analytics.track(event: self?.googleLogin ?? "GoogleLogin", properties: [self?.failure ?? "failure": AuthErrorResponse.googleUnknownError().message])
                     promise(.failure(AuthErrorResponse.googleUnknownError()))
                     return
@@ -101,11 +98,7 @@ final class GoogleLoginManager: SocialLoginManager, DeviceIdentifiable, SDKInfo,
                         return
                     }
                     
-                    guard let serverId = self?.gameInfoStorage.serverID else {
-                        Analytics.track(event: self?.googleLogin ?? "GoogleLogin", properties: [self?.failure ?? "failure": "Server Id is nil"])
-                        promise(.failure(AuthErrorResponse.appNotConfiguredGameServer()))
-                        return
-                    }
+                    let serverId = self?.gameInfoStorage.serverID
                     
                     let body = GoogleLoginRequestBody(
                         oauthToken: oauthToken,
@@ -129,7 +122,7 @@ final class GoogleLoginManager: SocialLoginManager, DeviceIdentifiable, SDKInfo,
                             return model.toResponse()
                         }
                         .flatMap { sessionResponse -> AnyPublisher<AuthSessionResponse, Error> in
-                            guard let strongSelf = self else {
+                            guard let strongSelf = self, let serverId else {
                                 return Just(sessionResponse)
                                     .setFailureType(to: Error.self)
                                     .eraseToAnyPublisher()
@@ -361,7 +354,7 @@ fileprivate struct GoogleLoginRequestBody: Encodable {
     let oauthToken: String
     let deviceId: String
     let gameId: Int
-    let serverId: Int
+    let serverId: Int?
     let platform: String
     let sdkVersion: String
     let appVersion: String

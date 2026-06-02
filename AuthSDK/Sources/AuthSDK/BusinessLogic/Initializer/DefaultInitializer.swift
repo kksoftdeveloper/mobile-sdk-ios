@@ -56,16 +56,25 @@ final class DefaultInitializer : InitializeAnalytics, Initialializer, DeviceIden
                 self.gameInfoStorage.appVersion = appVersion
                 self.gameInfoStorage.timeToRemindLogin = initResDTO.data.guestLoginAfterSeconds ?? 0
                 
-                if let fbClientID = model.facebookConfigModel?.clientId {
+                let infoDictionary = Bundle.main.infoDictionary
+                if let fbClientID = [model.facebookConfigModel?.clientId, infoDictionary?["FacebookAppID"] as? String]
+                    .compactMap({ $0?.configuredValue })
+                    .first {
                     try SensitiveDataManager.shared.set(fbClientID, for: .facebookClientID)
                 }
-                if let fbSecretClient = model.facebookConfigModel?.clientToken {
+                if let fbSecretClient = [model.facebookConfigModel?.clientToken, infoDictionary?["FacebookClientToken"] as? String]
+                    .compactMap({ $0?.configuredValue })
+                    .first {
                     try SensitiveDataManager.shared.set(fbSecretClient, for: .facebookClientSecret)
                 }
-                if let ggClientID = model.googleConfigModel?.clientId {
+                if let ggClientID = [model.googleConfigModel?.clientId, infoDictionary?["GIDClientID"] as? String]
+                    .compactMap({ $0?.configuredValue })
+                    .first {
                     try SensitiveDataManager.shared.set(ggClientID, for: .googleClientID)
                 }
-                if let ggURLSchema = model.googleConfigModel?.platformUrlSchema {
+                if let ggURLSchema = [model.googleConfigModel?.platformUrlSchema, infoDictionary?["GIDReversedClientID"] as? String]
+                    .compactMap({ $0?.configuredValue })
+                    .first {
                     try SensitiveDataManager.shared.set(ggURLSchema, for: .googleURLSchema)
                 }
                 
@@ -102,17 +111,21 @@ final class DefaultInitializer : InitializeAnalytics, Initialializer, DeviceIden
                             throw AuthErrorResponse.appNotConfiguredGameServer()
                         }
                         print("SERVER: Selected ServerId = \(serverId)")
-                        let selectSerObj = servers.first { $0.serverClientId?.lowercased() == serverId.lowercased() }
-                        if let selectedSer = selectSerObj {
-                            print("SERVER: Selected Server = \(selectedSer.serverId)")
-                            self.gameInfoStorage.serverID = selectedSer.serverId
-                            self.gameInfoStorage.serverName = selectedSer.serverName
-                        } else {
+                        let selectedServer = servers.first {
+                            $0.serverClientId?.lowercased() == serverId.lowercased()
+                        } ?? servers.first {
+                            $0.serverStatus == .online
+                        } ?? servers.first
+
+                        guard let selectedServer else {
                             self.gameInfoStorage.serverID = nil
                             self.gameInfoStorage.serverName = nil
-                            let notificationCenter = NotificationCenter.default
-                            notificationCenter.post(name: NSNotification.Name(NotificationKeys.SERVER_MAINTENANCE_KEY), object: nil)
+                            throw AuthErrorResponse.appNotConfiguredGameServer()
                         }
+
+                        print("SERVER: Selected Server = \(selectedServer.serverId)")
+                        self.gameInfoStorage.serverID = selectedServer.serverId
+                        self.gameInfoStorage.serverName = selectedServer.serverName
 //                        guard servers.contains(where: {
 //                            print("Selected compaired to selected server: \($0.serverId) & \(serverId.lowercased())")
 //                            isGoodGivenServerId = $0.serverId.lowercased() == serverId.lowercased()

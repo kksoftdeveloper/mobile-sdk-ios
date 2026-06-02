@@ -52,18 +52,27 @@ final class DefaultGameServerInfoManager : GameServerInfoManager, DeviceIdentifi
         return authAPIClient.initSDK(body: body)
             .tryMap { resDTO in
                 let model = resDTO.data.toModel()
-                self.gameInfoStorage.gameID = model.gameInfoModel?.gameId
+                self.gameInfoStorage.gameID = model.gameInfoModel?.gameId ?? 1
                 
-                if let fbClientID = model.facebookConfigModel?.clientId {
+                let infoDictionary = Bundle.main.infoDictionary
+                if let fbClientID = [model.facebookConfigModel?.clientId, infoDictionary?["FacebookAppID"] as? String]
+                    .compactMap({ $0?.configuredValue })
+                    .first {
                     try SensitiveDataManager.shared.set(fbClientID, for: .facebookClientID)
                 }
-                if let fbSecretClient = model.facebookConfigModel?.clientToken {
+                if let fbSecretClient = [model.facebookConfigModel?.clientToken, infoDictionary?["FacebookClientToken"] as? String]
+                    .compactMap({ $0?.configuredValue })
+                    .first {
                     try SensitiveDataManager.shared.set(fbSecretClient, for: .facebookClientSecret)
                 }
-                if let ggClientID = model.googleConfigModel?.clientId {
+                if let ggClientID = [model.googleConfigModel?.clientId, infoDictionary?["GIDClientID"] as? String]
+                    .compactMap({ $0?.configuredValue })
+                    .first {
                     try SensitiveDataManager.shared.set(ggClientID, for: .googleClientID)
                 }
-                if let ggURLSchema = model.googleConfigModel?.platformUrlSchema {
+                if let ggURLSchema = [model.googleConfigModel?.platformUrlSchema, infoDictionary?["GIDReversedClientID"] as? String]
+                    .compactMap({ $0?.configuredValue })
+                    .first {
                     try SensitiveDataManager.shared.set(ggURLSchema, for: .googleURLSchema)
                 }
                 guard let response = try resDTO.data.toModel().toGameInfoResponse() else {

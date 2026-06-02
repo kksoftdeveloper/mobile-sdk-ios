@@ -4,14 +4,26 @@ import SwiftUI
 import StoreKit
 
 struct PackageItemModel: Identifiable {
-    let product: Product
-    let package: GamePackageStatusOutput?
+    let product: Product?
+    let package: GamePackageStatusOutput
     
-    var id: String { product.id }
-    var serverPrice: Int? { package?.price }
-    var points: Int? { package?.point }
-    var alias: String? { package?.alias }
-    var description: String? { package?.description }
+    var id: String { package.sku }
+    var serverPrice: Int { package.price }
+    var points: Int { package.point }
+    var alias: String? { package.alias }
+    var description: String? { package.description }
+    var displayPrice: String {
+        if let product {
+            return product.displayPrice
+        }
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencyCode = "VND"
+        formatter.maximumFractionDigits = 0
+        return formatter.string(from: NSNumber(value: package.price)) ?? "\(package.price)"
+    }
+    var isActive: Bool { package.status.uppercased() == "ACTIVE" }
+    var isPurchasable: Bool { isActive && product != nil }
 }
 
 @MainActor
@@ -28,7 +40,6 @@ public class PackageListViewModel: ObservableObject, IAPAnalytics {
     @Published var hasMorePages: Bool = true
     private let pageSize: Int = 10
     private var isLoadingPage = false
-    private var packageLookup: [String: GamePackageStatusOutput] = [:]
     
     private var gameId: Int = 1
     private var serverId: String = ""
@@ -55,7 +66,6 @@ public class PackageListViewModel: ObservableObject, IAPAnalytics {
         if reset {
             page = 0
             hasMorePages = true
-            packageLookup.removeAll()
             products = []
         }
         
@@ -74,8 +84,6 @@ public class PackageListViewModel: ObservableObject, IAPAnalytics {
                 }
             } receiveValue: { [weak self] packages in
                 guard let self else { return }
-
-                packages.forEach { self.packageLookup[$0.sku] = $0 }
 
                 let skus = packages.map { $0.sku }
                 
@@ -105,6 +113,7 @@ public class PackageListViewModel: ObservableObject, IAPAnalytics {
                 guard let self else { return }
                 if case .failure(let error) = completion {
                     print("[PackageListViewModel] Failed to fetch products: \(error.message)")
+                    self.updateProducts(storeProducts: [], packages: packages, append: append)
                 }
                 self.isLoadingPage = false
                 // Hide loading indicator when initial load completes
@@ -115,26 +124,7 @@ public class PackageListViewModel: ObservableObject, IAPAnalytics {
                 print("[PackageListViewModel] fetch products with new products: \(newProducts)")
                 guard let self else { return }
 
-                let lookup = packages.reduce(into: [String: GamePackageStatusOutput]()) { partialResult, package in
-                    partialResult[package.sku] = package
-                }
-                
-                let mappedItems = newProducts.map { product in
-                    let package = lookup[product.id] ?? self.packageLookup[product.id]
-                    return PackageItemModel(product: product, package: package)
-                }
-                
-                if append {
-                    let existingIDs = Set(self.products.map(\.id))
-                    let uniqueItems = mappedItems.filter { !existingIDs.contains($0.id) }
-                    self.products.append(contentsOf: uniqueItems)
-                } else {
-                    self.products = mappedItems
-                }
-                
-                self.products.sort {
-                    self.priceValue(for: $0) < self.priceValue(for: $1)
-                }
+                self.updateProducts(storeProducts: newProducts, packages: packages, append: append)
                 
                 self.isLoadingPage = false
                 // Hide loading indicator when initial load completes
@@ -145,13 +135,35 @@ public class PackageListViewModel: ObservableObject, IAPAnalytics {
             .store(in: &cancellables)
     }
         
+    private func updateProducts(storeProducts: [Product], packages: [GamePackageStatusOutput], append: Bool) {
+        let productsByID = Dictionary(uniqueKeysWithValues: storeProducts.map { ($0.id, $0) })
+        let mappedItems = packages.map { package in
+            PackageItemModel(product: productsByID[package.sku], package: package)
+        }
+
+        if append {
+            let existingIDs = Set(products.map(\.id))
+            let uniqueItems = mappedItems.filter { !existingIDs.contains($0.id) }
+            products.append(contentsOf: uniqueItems)
+        } else {
+            products = mappedItems
+        }
+
+        products.sort {
+            priceValue(for: $0) < priceValue(for: $1)
+        }
+    }
+
     func purchaseProduct(_ item: PackageItemModel) {
         //For Debug
 //        handleApplePurchaseProduct(product: product)
 //        return
         
+        guard item.isActive, let product = item.product else {
+            print("[PackageListViewModel] Package is not purchasable for SKU: \(item.id), status: \(item.package.status)")
+            return
+        }
         isLoading = true
-        let product = item.product
         let price = priceValue(for: item)
         print("[PackageListViewModel] IAP: product-id: \(product.id), price: \(price)")
         paymentManager?
@@ -317,10 +329,7 @@ public class PackageListViewModel: ObservableObject, IAPAnalytics {
     }
     
     private func priceValue(for item: PackageItemModel) -> Int {
-        if let serverPrice = item.serverPrice {
-            return serverPrice
-        }
-        return NSDecimalNumber(decimal: item.product.price).intValue
+        item.serverPrice
     }
     
         

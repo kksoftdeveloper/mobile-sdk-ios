@@ -46,10 +46,7 @@ extension SocialAccountLinker {
                     return
                 }
 
-                guard let presentingVC = UIApplication.shared.connectedScenes
-                    .compactMap({ $0 as? UIWindowScene })
-                    .flatMap({ $0.windows })
-                    .first(where: { $0.isKeyWindow })?.rootViewController else {
+                guard let presentingVC = UIApplication.shared.authSDKTopViewController else {
                     Analytics.track(event: self.linkToGoogleAccount, properties: [self.failure :AuthErrorResponse.googleUnknownError().message])
                     promise(.failure(AuthErrorResponse.googleUnknownError()))
                     return

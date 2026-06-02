@@ -130,10 +130,7 @@ extension SocialAccountLinker {
 //                completion(.success(token.tokenString))
 //                return
 //            }
-            guard let presentingVC = UIApplication.shared.connectedScenes
-                .compactMap({ $0 as? UIWindowScene })
-                .flatMap({ $0.windows })
-                .first(where: { $0.isKeyWindow })?.rootViewController else {
+            guard let presentingVC = UIApplication.shared.authSDKTopViewController else {
 //                Analytics.track(event: self?.googleLogin ?? "GoogleLogin", properties: [self?.failure ?? "failure": AuthErrorResponse.googleUnknownError().message])
                 completion(.failure(AuthErrorResponse.facebookUnknownError()))
                 return

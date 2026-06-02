@@ -67,10 +67,7 @@ final class FacebookLoginManager: SocialLoginManager, DeviceIdentifiable, SDKInf
                     return
                 }
                 
-                guard let serverID = self?.gameInfoStorage.serverID else {
-                    promise(.failure(AuthErrorResponse.appNotConfiguredGameServer()))
-                    return
-                }
+                let serverID = self?.gameInfoStorage.serverID
                 
                 self?.requestLogin { [weak self] result in
                     guard let self = self else {
@@ -107,6 +104,11 @@ final class FacebookLoginManager: SocialLoginManager, DeviceIdentifiable, SDKInf
                                 return model.toResponse()
                             }
                             .flatMap { sessionResponse -> AnyPublisher<AuthSessionResponse, Error> in
+                                guard let serverID else {
+                                    return Just(sessionResponse)
+                                        .setFailureType(to: Error.self)
+                                        .eraseToAnyPublisher()
+                                }
                                 return self.authAPIClient
                                     .getCharacter(header: [:], gameId: gameId, serverId: serverID)
                                     .map { gameUidResponse in
@@ -295,10 +297,7 @@ final class FacebookLoginManager: SocialLoginManager, DeviceIdentifiable, SDKInf
 //                completion(.success(token.tokenString))
 //                return
 //            }
-            guard let presentingVC = UIApplication.shared.connectedScenes
-                .compactMap({ $0 as? UIWindowScene })
-                .flatMap({ $0.windows })
-                .first(where: { $0.isKeyWindow })?.rootViewController else {
+            guard let presentingVC = UIApplication.shared.authSDKTopViewController else {
 //                Analytics.track(event: self?.googleLogin ?? "GoogleLogin", properties: [self?.failure ?? "failure": AuthErrorResponse.googleUnknownError().message])
                 completion(.failure(AuthErrorResponse.facebookUnknownError()))
                 return
@@ -393,7 +392,7 @@ struct FacebookLoginRequestBody: Encodable {
     let oauthToken: String
     let deviceId: String
     let gameId: Int
-    let serverId: Int
+    let serverId: Int?
     let platform: String
     let sdkVersion: String
     let appVersion: String

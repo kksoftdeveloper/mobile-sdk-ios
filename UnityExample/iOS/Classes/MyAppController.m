@@ -10,6 +10,7 @@
 #import "MyAppController.h"
 #import "AuthManagerBridgeGlobal.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <GoogleSignIn/GoogleSignIn.h>
 #import "Firebase.h"
 
 // Forward declaration for Swift class
@@ -27,7 +28,7 @@ static KKSOFTProxy *g_proxy = nil;
     NSLog(@"Did Logout");
     // TODO: Add your business here
     [[KeychainManagerObjCBridge shared] clearAuthSession];
-    
+
 }
 
 - (void)didClose {
@@ -45,7 +46,7 @@ static KKSOFTProxy *g_proxy = nil;
             NSString *gameUUID = dict[@"gameUID"];
             NSString *serverId = dict[@"serverId"];
             NSString *refreshToken = dict[@"refreshToken"];
-            
+
             [[KeychainManagerObjCBridge shared] saveAuthSessionDict:dict];
 
             NSLog(@"Refreshed data saved.");
@@ -66,16 +67,16 @@ static KKSOFTProxy *g_proxy = nil;
             NSString *gameUUID = dict[@"gameUID"];
             NSString *serverId = dict[@"serverId"];
             NSString *refreshToken = dict[@"refreshToken"];
-            
+
             // Save to keychain
             [[KeychainManagerObjCBridge shared] saveAuthSessionDict:dict];
             NSLog(@"Login data saved.");
         }
         UIViewController *unityVC = self.rootViewController;
-        
+
         [unityVC dismissViewControllerAnimated:YES completion:^{
             NSBundle *unityFrameworkBundle = [NSBundle bundleForClass:NSClassFromString(@"MenuDialogViewController")];
-           
+
             MenuDialogViewController *dialog = [[MenuDialogViewController alloc] initWithNibName:@"MenuDialogViewController" bundle:unityFrameworkBundle];
             [dialog updateToken:accessToken];
 //            [dialog updateError:@"Error: 2"];
@@ -87,14 +88,14 @@ static KKSOFTProxy *g_proxy = nil;
     }
 }
 
-- (void)didChangedGameServerWithData:(id _Nullable)data { 
+- (void)didChangedGameServerWithData:(id _Nullable)data {
     NSLog(@"Did Change Game Server");
     // TODO: Add your business here
     if([data isKindOfClass:[NSDictionary class]]) {
         NSDictionary *dict = (NSDictionary *)data;
         NSString *gameUUID = dict[@"gameUID"];
         NSString *serverId = dict[@"serverId"];
-        
+
         // TODO: should save the changed serverId and gameUID here
         NSLog(@"Selected Game Server data saved.");
     } else {
@@ -102,23 +103,23 @@ static KKSOFTProxy *g_proxy = nil;
     }
 }
 
-- (void)didDeactivateAccountWithData:(id _Nullable)data { 
+- (void)didDeactivateAccountWithData:(id _Nullable)data {
     NSLog(@"Did Deactivate Account");
     // TODO: Add your business here
     [[KeychainManagerObjCBridge shared] clearAuthSession];
 }
 
-- (void)didGetLatestSessionWithData:(id _Nullable)data { 
+- (void)didGetLatestSessionWithData:(id _Nullable)data {
     NSLog(@"Did Get Latest Session");
     // TODO: Add your business here
-    
+
     if([data isKindOfClass:[NSDictionary class]]) {
         NSDictionary *dict = (NSDictionary *)data;
         NSString *accessToken = dict[@"accessToken"];
         NSString *gameUUID = dict[@"gameUID"];
         NSString *serverId = dict[@"serverId"];
         NSString *refreshToken = dict[@"refreshToken"];
-        
+
         // Save to keychain
         [[KeychainManagerObjCBridge shared] saveAuthSessionDict:dict];
         NSLog(@"Latest session data saved.");
@@ -127,17 +128,17 @@ static KKSOFTProxy *g_proxy = nil;
     }
 }
 
-- (void)didLinkAccountWithData:(id _Nullable)data { 
+- (void)didLinkAccountWithData:(id _Nullable)data {
     NSLog(@"Did Link Account");
     // TODO: Add your business here
-    
+
     if([data isKindOfClass:[NSDictionary class]]) {
         NSDictionary *dict = (NSDictionary *)data;
         NSString *accessToken = dict[@"accessToken"];
         NSString *gameUUID = dict[@"gameUID"];
         NSString *serverId = dict[@"serverId"];
         NSString *refreshToken = dict[@"refreshToken"];
-        
+
         // Save to keychain
         [[KeychainManagerObjCBridge shared] saveAuthSessionDict:dict];
         NSLog(@"Link Account data saved.");
@@ -149,21 +150,27 @@ static KKSOFTProxy *g_proxy = nil;
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
     [FontLoaderObjCBridge loadAllFonts];
-    
-    // Facebook SDK init
-    [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
-    
-    // Set Facebook settings
-    [FBSDKSettings.sharedSettings setAppID:@"1161544315137705"];
-    [FBSDKSettings.sharedSettings setClientToken:@"6a2631357b252d0ba6818832146a59dc"];
+
+    // Configure Facebook SDK before lifecycle initialization
+    NSString *facebookAppID = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"FacebookAppID"];
+    NSString *facebookClientToken = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"FacebookClientToken"];
+    [FBSDKSettings.sharedSettings setAppID:facebookAppID];
+    [FBSDKSettings.sharedSettings setClientToken:facebookClientToken];
     FBSDKSettings.sharedSettings.autoLogAppEventsEnabled = NO;
     [FBSDKSettings.sharedSettings enableLoggingBehavior:FBSDKLoggingBehaviorDeveloperErrors];
-    
+    [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+
+    // Configure Google Sign-In explicitly from the active environment
+    NSString *googleClientID = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"GIDClientID"];
+    if (googleClientID.length > 0) {
+        GIDSignIn.sharedInstance.configuration = [[GIDConfiguration alloc] initWithClientID:googleClientID];
+    }
+
     [FIRApp configure];
-    
+
     // Register notification observers early, before any notifications might be posted
     [self registerNotificationObservers];
-    
+
     // Call super for Unity init
     return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
@@ -171,13 +178,14 @@ static KKSOFTProxy *g_proxy = nil;
 // iOS 10+ method
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
 {
-    // Handle Facebook SDK
+    // Handle social login SDK callbacks
+    BOOL handledByGoogle = [GIDSignIn.sharedInstance handleURL:url];
     BOOL handledByFacebook = [[FBSDKApplicationDelegate sharedInstance] application:app openURL:url options:options];
     // Handle Unity by calling super (parent logic)
     BOOL handledByUnity = [super application:app openURL:url options:options];
-    
-    // Return YES if either handler handled the URL
-    return handledByFacebook || handledByUnity;
+
+    // Return YES if any handler handled the URL
+    return handledByGoogle || handledByFacebook || handledByUnity;
 }
 
 // iOS 9 method
@@ -186,62 +194,63 @@ static KKSOFTProxy *g_proxy = nil;
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
-    // Handle Facebook SDK
+    // Handle social login SDK callbacks
+    BOOL handledByGoogle = [GIDSignIn.sharedInstance handleURL:url];
     BOOL handledByFacebook = [[FBSDKApplicationDelegate sharedInstance] application:application
                                                                             openURL:url
                                                                   sourceApplication:sourceApplication
                                                                          annotation:annotation];
     // Handle Unity by calling super (parent logic)
     BOOL handledByUnity = [super application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
-    
-    // Return YES if either handler handled the URL
-    return handledByFacebook || handledByUnity;
+
+    // Return YES if any handler handled the URL
+    return handledByGoogle || handledByFacebook || handledByUnity;
 }
 
 - (void)registerNotificationObservers {
     NSLog(@"[MyAppController] Registering notification observers");
-    
+
     // Handle In-app notification
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleRefreshedToken:)
                                                  name:@"KKSOFT.RefreshedToken"
                                                object:nil];
-    
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleUnauthenticated:)
                                                  name:@"KKSOFT.UnauthenticatedToken"
                                                object:nil];
-    
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleTokenExpired:)
                                                  name:@"KKSOFT.ExpirationToken"
                                                object:nil];
-    
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleServerMaintainance:)
                                                  name:@"KKSOFT.ServerMaintainance"
                                                object:nil];
-    
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleIAPSuccess:)
                                                  name:@"KKSOFT.IAP.Success"
                                                object:nil];
-    
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleIAPFail:)
                                                  name:@"KKSOFT.IAP.FAIL"
                                                object:nil];
-    
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleIAPInvalidSKU:)
                                                  name:@"KKSOFT.IAP.InvalidSKU"
                                                object:nil];
-    
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleIAPUserCancel:)
                                                  name:@"KKSOFT.IAP.UserCancel"
                                                object:nil];
-    
+
     NSLog(@"[MyAppController] Notification observers registered");
 }
 
@@ -249,7 +258,7 @@ static KKSOFTProxy *g_proxy = nil;
 {
     // Call Unity's logic first
     [super applicationDidBecomeActive:application];
-    
+
     dispatch_async(dispatch_get_main_queue(), ^{
         if (g_callback) {
             NSDictionary *data = @{
@@ -260,7 +269,7 @@ static KKSOFTProxy *g_proxy = nil;
             NSData *jsonData = [NSJSONSerialization dataWithJSONObject:data options:0 error:nil];
             NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
             g_callback([jsonString UTF8String]); // Call Unity callback
-            
+
         }
         NSLog(@"KKSOFT Initialized from MyAppController");
         KKSOFT_Initialize(GetAppController().rootViewController, g_callback);
@@ -274,57 +283,57 @@ static KKSOFTProxy *g_proxy = nil;
     NSLog(@"[MyAppController] Notification name: %@", note.name);
     NSLog(@"[MyAppController] Notification object: %@", note.object);
     NSLog(@"[MyAppController] Notification userInfo: %@", note.userInfo);
-    
+
     // Extract AuthSessionOutput from notification object
     // The object is a Swift struct AuthSessionOutput, convert it to NSDictionary
     NSDictionary *authSessionDict = [AuthSessionOutputBridge extractFromNotification:note];
-    
+
     if (authSessionDict != nil) {
         NSLog(@"[MyAppController] Extracted auth session: %@", authSessionDict);
-        
+
         // Ensure we're on the main thread for UI/keychain operations
         dispatch_async(dispatch_get_main_queue(), ^{
             // Extract values safely with nil checks
             id accessTokenObj = authSessionDict[@"accessToken"];
             id gameUIDObj = authSessionDict[@"gameUID"];  // Note: Swift uses "gameUID" key
             id refreshTokenObj = authSessionDict[@"refreshToken"];
-            
+
             NSString *accessToken = nil;
             NSString *gameUID = nil;
             NSString *refreshToken = nil;
-            
+
             // Safely convert to NSString
             if ([accessTokenObj isKindOfClass:[NSString class]]) {
                 accessToken = (NSString *)accessTokenObj;
             } else if ([accessTokenObj isKindOfClass:[NSNumber class]]) {
                 accessToken = [(NSNumber *)accessTokenObj stringValue];
             }
-            
+
             if ([gameUIDObj isKindOfClass:[NSString class]]) {
                 gameUID = (NSString *)gameUIDObj;
             } else if ([gameUIDObj isKindOfClass:[NSNumber class]]) {
                 gameUID = [(NSNumber *)gameUIDObj stringValue];
             }
-            
+
             if ([refreshTokenObj isKindOfClass:[NSString class]]) {
                 refreshToken = (NSString *)refreshTokenObj;
             } else if ([refreshTokenObj isKindOfClass:[NSNumber class]]) {
                 refreshToken = [(NSNumber *)refreshTokenObj stringValue];
             }
-            
+
             NSLog(@"[MyAppController] Access Token: %@", accessToken);
             NSLog(@"[MyAppController] Game UID: %@", gameUID);
             NSLog(@"[MyAppController] Refresh Token: %@", refreshToken);
-            
+
             // Save to keychain
             if (accessToken && refreshToken && gameUID) {
                 [[KeychainManagerObjCBridge shared] saveAuthSessionDict:authSessionDict];
                 NSLog(@"[MyAppController] ✅ Refreshed token data saved successfully.");
-                
+
                 // Call your delegate method if needed
                 // [self didRefreshedTokenWithData:authSessionDict];
             } else {
-                NSLog(@"[MyAppController] ⚠️ Missing required values - accessToken: %@, refreshToken: %@, gameUID: %@", 
+                NSLog(@"[MyAppController] ⚠️ Missing required values - accessToken: %@, refreshToken: %@, gameUID: %@",
                       accessToken != nil ? @"present" : @"nil",
                       refreshToken != nil ? @"present" : @"nil",
                       gameUID != nil ? @"present" : @"nil");
@@ -332,7 +341,7 @@ static KKSOFTProxy *g_proxy = nil;
         });
     } else {
         NSLog(@"[MyAppController] Failed to extract AuthSessionOutput from notification");
-        
+
         // Fallback: try to get from userInfo if it was posted there
         if (note.userInfo != nil && note.userInfo.count > 0) {
             NSDictionary *dict = note.userInfo;
@@ -406,7 +415,7 @@ static KKSOFTProxy *g_proxy = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:@"KKSOFT.ExpirationToken"
                                                   object:nil];
-    
+
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:@"KKSOFT.ServerMaintainance"
                                                   object:nil];
@@ -414,7 +423,7 @@ static KKSOFTProxy *g_proxy = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:@"KKSOFT.IAP.Success"
                                                   object:nil];
-    
+
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:@"KKSOFT.IAP.FAIL"
                                                   object:nil];
@@ -422,7 +431,7 @@ static KKSOFTProxy *g_proxy = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:@"KKSOFT.IAP.InvalidSKU"
                                                   object:nil];
-    
+
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:@"KKSOFT.IAP.UserCancel"
                                                   object:nil];
@@ -458,14 +467,14 @@ void KKSOFT_ServerMaintainance() {
 
 void startSDK(id<AuthResultDelegate> delegate) {
     NSLog(@"✅ Showing SwiftUI SDK demo view from Unity");
-    
+
     AuthManagerObjCBridge *bridge = GlobalAuthManagerBridge();
-    
+
     [bridge setDelegate:delegate];
-    
+
     NSString *bundleId = [[NSBundle mainBundle] bundleIdentifier];
     NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    
+
     [bridge initSDKWithPackageName:bundleId
                         appVersion:appVersion
                         serverId:@"IOS1"
@@ -478,7 +487,7 @@ void startSDK(id<AuthResultDelegate> delegate) {
             UIViewController *unityVC = _UnityAppController.rootViewController;
             [unityVC dismissViewControllerAnimated:YES completion:^{
                 NSBundle *unityFrameworkBundle = [NSBundle bundleForClass:NSClassFromString(@"MenuDialogViewController")];
-                
+
                 MenuDialogViewController *dialog = [[MenuDialogViewController alloc] initWithNibName:@"MenuDialogViewController" bundle:unityFrameworkBundle];
                 [dialog updateToken:accessToken];
                 dialog.modalPresentationStyle = UIModalPresentationOverCurrentContext;
@@ -493,15 +502,15 @@ void startSDK(id<AuthResultDelegate> delegate) {
             [bridge showForceUpdateViewWithAppStoreId:appStoreId from:unityVC];
             return;
         }
-        
+
         NSLog(@"Show welcome screen");
         // Now present the SwiftUI SDK view in cases of error & no session
         dispatch_async(dispatch_get_main_queue(), ^{
             UIViewController *controller = [bridge showLoginView];
-            
+
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
             nav.modalPresentationStyle = UIModalPresentationOverFullScreen;
-            
+
             UIViewController *unityVC = GetAppController().rootViewController;//  _UnityAppController.rootViewController;
             [unityVC presentViewController:nav animated:YES completion:nil];
         });

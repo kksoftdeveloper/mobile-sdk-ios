@@ -22,13 +22,21 @@ struct FacebookLoginParameters: ValidatedLoginParameters {
 
 extension FacebookLoginParameters {
     static func fromSensitiveData() throws -> FacebookLoginParameters {
-        guard let clientID = try SensitiveDataManager.shared.get(for: .facebookClientID) else {
+        let infoDictionary = Bundle.main.infoDictionary
+        let storedClientID = try SensitiveDataManager.shared.get(for: .facebookClientID)
+        let storedClientSecret = try SensitiveDataManager.shared.get(for: .facebookClientSecret)
+
+        guard let clientID = [storedClientID, infoDictionary?["FacebookAppID"] as? String]
+            .compactMap({ $0?.configuredValue })
+            .first else {
             throw ValidationError.facebookClientIDMissing
         }
-        guard let clientSecret = try SensitiveDataManager.shared.get(for: .facebookClientSecret) else {
+        guard let clientSecret = [storedClientSecret, infoDictionary?["FacebookClientToken"] as? String]
+            .compactMap({ $0?.configuredValue })
+            .first else {
             throw ValidationError.facebookClientSecretMissing
         }
-        
+
         return FacebookLoginParameters(clientID: clientID, clientSecret: clientSecret)
     }
 }

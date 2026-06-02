@@ -41,8 +41,8 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.511211441022-p18sv5i70b87g3440kr2ld0bujg385rk</string>
-				<string>fb1161544315137705</string>
+				<string>$(GIDReversedClientID)</string>
+				<string>$(FacebookURLScheme)</string>
 			</array>
 		</dict>
 	</array>
@@ -58,12 +58,12 @@
 	<true/>
 	<key>FacebookClientToken</key>
 	<string>$(FacebookClientToken)</string>
-	<key>FacebookDisplayName</key>
-	<string>$(FacebookDisplayName)</string>
 	<key>FirebaseAppID</key>
 	<string>$(FirebaseAppID)</string>
 	<key>GIDClientID</key>
 	<string>$(GIDClientID)</string>
+	<key>GIDReversedClientID</key>
+	<string>$(GIDReversedClientID)</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSApplicationQueriesSchemes</key>

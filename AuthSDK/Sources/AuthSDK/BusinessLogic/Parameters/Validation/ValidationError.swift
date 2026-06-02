@@ -12,6 +12,7 @@ enum ValidationError: LocalizedError {
     case phoneIsInvalid
     case otpCodeIsInvalid
     case passwordIsEmpty
+    case passwordIsTooShort
     case facebookClientIDMissing
     case facebookClientSecretMissing
     case googleClientIDMissing
@@ -31,6 +32,8 @@ enum ValidationError: LocalizedError {
             return "OTP code is invalid."
         case .passwordIsEmpty:
             return "Password cannot be empty."
+        case .passwordIsTooShort:
+            return "Password must contain at least 8 characters."
         case .facebookClientIDMissing:
             return "Facebook Client ID is missing."
         case .facebookClientSecretMissing:

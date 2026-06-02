@@ -41,6 +41,12 @@ extension String {
         return self.range(of: md5Regex, options: .regularExpression) != nil
     }
 
+    var configuredValue: String? {
+        let value = trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !value.isEmpty, !value.hasPrefix("$(") else { return nil }
+        return value
+    }
+
     func capitalizingFirstLetter() -> String {
         return prefix(1).capitalized + dropFirst()
     }

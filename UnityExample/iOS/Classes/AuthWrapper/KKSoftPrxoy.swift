@@ -27,18 +27,18 @@ import TrackingSDK
         "TOKEN_EXPIRED" : 10,
         "LINK_ACCOUNT": 11,
         "IAP" : 12,
-        
+
     ]
-    
+
     static let ResultCodes : [ String : Int ] = [
         "FAIL" : -1,
         "CANCEL" : 0,
         "SUCCESS" : 1
     ]
-    
+
     func Callback ( jsonPairs : [ String : Any ] ) {
         NSLog ( "---- KKSOFT: proxy Callback" );
-        
+
         do
         {
             let jsonData = try JSONSerialization.data (
@@ -46,51 +46,51 @@ import TrackingSDK
                 options : []
             )
             let finalJSON = String ( data : jsonData, encoding : .utf8 ) ?? ""
-            
+
             print ( "Final JSON for callback: \( finalJSON )" )
-            
+
             onCallback? ( finalJSON )
-            
+
         } catch
         {
             print ( "Error serializing JSON: \( error )" )
         }
     }
-    
-    
+
+
     @MainActor @objc public static let shared = KKSOFTProxy()
-    
+
     public typealias OnCallback = @convention(c) (UnsafePointer<CChar>?) -> Void
     private var onCallback: OnCallback?
-    
+
     let authService = AuthServiceProvider.Builder()
-    
+
     var authManager : AuthManager?
-    
+
     // TrackingSDK manager
     var trackingManager: TrackingManager?
-    
+
     weak var hostingController : UIHostingController<AnyView>?
     @objc public var presentingVC: UIViewController?
-    
+
     // Link Account pops up automatically
     private var autoLinkTimer: Timer?
     private var autoLinkPopupInterval: Int = 60 // Default, or change as needed
     private var autoLinkRemainingSeconds: Int = 60
     private var lastGuestToken: String?
     private var isAutoLinkDialogShowing: Bool = false
-    
+
     private let env = (Bundle.main.infoDictionary?[ "APP_ENV" ] as? String ?? "staging") == "production" ? Environment.production : Environment.staging
-    
+
     // ServerId
     private var serverId = "IOS1"
-    
+
     public override init() {
         authManager = AuthServiceProvider.Builder().setEnvironment(env).build().authManager
     }
-    
+
     private var cancellables = Set<AnyCancellable>()
-    
+
     @MainActor @objc public func Initialize (_ unityVC: UIViewController, _ onCallback : @escaping OnCallback )
     {
         NSLog ( "---- KKSOFT Proxy Initialize" )
@@ -101,13 +101,13 @@ import TrackingSDK
         let bundleId = Bundle.main.bundleIdentifier
         NSLog ( "---- KKSOFT release bundle-id = \(bundleId ?? "")")
 #endif
-        
+
         self.onCallback = onCallback
         self.presentingVC = unityVC
-        
+
         // Initialize TrackingSDK
         initializeTrackingSDK()
-        
+
         authManager?.initSDK(
             packageName: Bundle.main.bundleIdentifier ?? "com.kksoft.vn.ts3.staging",
             appVersion: Bundle.main.infoDictionary? [ "CFBundleShortVersionString" ] as? String ?? "1.0.0",
@@ -117,7 +117,7 @@ import TrackingSDK
         .flatMap { [weak self] gameInfo -> AnyPublisher<AuthSessionResponse, Error> in
             guard let self = self, let authManager = self.authManager else { return Empty().eraseToAnyPublisher() }
             let versionInfo = gameInfo.versionInfo
-            
+
             NSLog ("---- KKSOFT Proxy Init before forceUpdate")
             if versionInfo.forceUpdate {
                 NSLog ("---- KKSOFT Proxy Init forceUpdate")
@@ -146,7 +146,7 @@ import TrackingSDK
                             .ResponseCodes [ "INITIALIZE" ]
                         jsonPairs [ "ResultCode" ] = KKSOFTProxy
                             .ResultCodes [ "FAIL" ]
-                        
+
                         if error is AuthErrorResponse {
                             jsonPairs [ "Code" ] = (
                                 error as? AuthErrorResponse
@@ -173,7 +173,7 @@ import TrackingSDK
                 if !session.accessToken.isEmpty {
                     if session.userBlocked == true {
                         self.showUserBlockedView(data: session)
-                        
+
                     } else  if session.gameUUID == nil {
                         self.showGameServerView(data: session)
                     } else {
@@ -191,7 +191,7 @@ import TrackingSDK
         )
         .store(in: &cancellables)
     }
-    
+
     @MainActor @objc public func Auth() {
         NSLog ( "---- KKSOFT Proxy Auth" )
         guard let authManager = authManager else {return}
@@ -203,16 +203,16 @@ import TrackingSDK
             onSuccess: { data in
                 NSLog ( "---- KKSOFT Proxy Auth onSuccess" )
                 //                guard let self = self else { return }
-                
+
                 self.Callback(
                     jsonPairs: data.toDictionnary(responseCode: "AUTH")
                 )
                 if data.userBlocked == true {
                     self.showUserBlockedView(data: data)
-                    
+
                 } else if data.gameUUID == nil {
                     self.showGameServerView(data: data)
-                    
+
                 } else {
                     self.getRootViewController()?.dismiss(animated: true, completion: {
                         self.showMenu(session: data)
@@ -235,9 +235,9 @@ import TrackingSDK
                 jsonPairs [ "ResultCode" ] = KKSOFTProxy.ResultCodes [ "FAIL" ]
                 jsonPairs [ "Message" ] = authErrorResponse.message
                 jsonPairs [ "Code" ] = authErrorResponse.code.id
-                
+
                 self.Callback ( jsonPairs : jsonPairs )
-                
+
                 //                self.hostingController?.dismiss(
                 //                    animated: true,
                 //                    completion: {
@@ -255,30 +255,30 @@ import TrackingSDK
                 })
             }
         )
-        
+
         let controller = UIHostingController(rootView: AnyView(view))
         controller.overrideUserInterfaceStyle = .light
         controller.view.backgroundColor = UIColor(white: 0, alpha: 0.3)
         self.hostingController = controller
-        
+
         let nav = UINavigationController ( rootViewController : controller )
         nav.modalPresentationStyle = .overFullScreen
-        
+
         //        presentingVC?.present ( nav, animated : true, completion : nil )
-        
+
         self.getRootViewController()?.present(nav, animated: true, completion: nil)
     }
-    
+
     @MainActor public func showLogout(session: AuthSessionResponse?) {
         print("Show Logout View")
         guard let authManager = authManager else {return}
-        
+
         // Track screen view when logout screen opens
         trackScreen("Logout-Screen", parameters: [
             "user_id": session?.gameUUID ?? "unknown",
             "is_guest": authManager.isGuestUser()
         ])
-        
+
         let view = LogoutConfirmView(
             onClose: {
                 "LOGOUT".toDictionnary()
@@ -292,7 +292,7 @@ import TrackingSDK
                     .receive(on: DispatchQueue.main)
                     .sink(
                         receiveCompletion: {  completionStatus in
-                            
+
                             if case .failure(_) = completionStatus {
                                 var jsonPairs : [ String : Any ]
                                 jsonPairs = [ : ]
@@ -300,7 +300,7 @@ import TrackingSDK
                                     .ResponseCodes [ "LOGOUT" ]
                                 jsonPairs [ "ResultCode" ] = KKSOFTProxy
                                     .ResultCodes [ "FAIL" ]
-                                
+
                                 self.Callback ( jsonPairs : jsonPairs )
                                 self.hostingController?
                                     .dismiss(
@@ -312,10 +312,10 @@ import TrackingSDK
                                             )
                                         })
                             }
-                            
+
                         },
                         receiveValue: {  data in
-                            
+
                             var jsonPairs : [ String : Any ]
                             jsonPairs = [ : ]
                             jsonPairs [ "ResponseCode" ] = KKSOFTProxy
@@ -328,7 +328,7 @@ import TrackingSDK
                                         responseCode: "LOGOUT"
                                     ) ?? jsonPairs
                             )
-                            
+
                             self.hostingController?
                                 .dismiss(animated: true, completion: {
                                     self.showMenu(session: nil)
@@ -345,7 +345,7 @@ import TrackingSDK
         self.hostingController = controller
         self.presentingVC?.present(controller, animated: false, completion: nil)
     }
-    
+
     @MainActor public func showGameServerView(session: AuthSessionResponse?) {
         print("Show Game Server View")
         guard let authManager = authManager else {return}
@@ -378,7 +378,7 @@ import TrackingSDK
         self.hostingController = controller
         self.presentingVC?.present(controller, animated: false, completion: nil)
     }
-    
+
     @MainActor public func showPackageItems(session: AuthSessionResponse) {
         print("Show Game Server View")
         guard let authManager = authManager else {return}
@@ -406,7 +406,7 @@ import TrackingSDK
         //            }
         //        )
         print("server-id = \(serverId)")
-        print("game-id = \(authManager.getGameId() ?? 0)")
+        print("game-id = \(authManager.getGameId() ?? 1)")
         print("is-guest-user = \(authManager.isGuestUser())")
         let view = PackageListView(
             onCloseClick: {
@@ -434,7 +434,7 @@ import TrackingSDK
         self.hostingController = controller
         self.presentingVC?.present(controller, animated: false, completion: nil)
     }
-    
+
     @MainActor public func showDeactivateAccount(session: AuthSessionResponse?) {
         print("Show Deactivate Account View")
         guard let authManager = authManager else {return}
@@ -451,7 +451,7 @@ import TrackingSDK
                 jsonPairs [ "ResponseCode" ] = KKSOFTProxy.ResponseCodes [ "DELETE_ACCOUNT" ]
                 jsonPairs [ "ResultCode" ] = KKSOFTProxy.ResultCodes [ "SUCCESS" ]
                 self.Callback(jsonPairs: jsonPairs)
-                
+
                 self.hostingController?.dismiss(animated: true, completion: {
                     self.showMenu(session: nil)
                 })
@@ -462,7 +462,7 @@ import TrackingSDK
                 jsonPairs [ "ResponseCode" ] = KKSOFTProxy.ResponseCodes [ "DELETE_ACCOUNT" ]
                 jsonPairs [ "ResultCode" ] = KKSOFTProxy.ResultCodes [ "FAIL" ]
                 self.Callback(jsonPairs: jsonPairs)
-                
+
                 self.hostingController?.dismiss(animated: true, completion: {
                     self.showMenu(session: session, error: "Delete account error")
                 })
@@ -476,17 +476,17 @@ import TrackingSDK
         self.hostingController = controller
         self.presentingVC?.present(controller, animated: false, completion: nil)
     }
-    
+
     @MainActor public func showLinkAccount(session: AuthSessionResponse?) {
         print("Show Link Account View")
         guard let authManager = authManager else {return}
-        
+
         // 1) Safely unwrap the token
         guard let guestToken = session?.accessToken, !guestToken.isEmpty else {
             self.showMenu(session: session, error: "Missing guest token")
             return
         }
-        
+
         // 2) Build the SwiftUI view (explicit type helps the compiler)
         let view: LinkAccountView = LinkAccountView(
             authManager: authManager,
@@ -496,7 +496,7 @@ import TrackingSDK
                 jsonPairs["ResponseCode"] = KKSOFTProxy.ResponseCodes["LINK_ACCOUNT"]
                 jsonPairs["ResultCode"]   = KKSOFTProxy.ResultCodes["SUCCESS"]
                 self.Callback(jsonPairs: jsonPairs)
-                
+
                 self.hostingController?.dismiss(animated: true, completion: {
                     self.showMenu(session: nil)
                 })
@@ -506,7 +506,7 @@ import TrackingSDK
                 jsonPairs["ResponseCode"] = KKSOFTProxy.ResponseCodes["LINK_ACCOUNT"]
                 jsonPairs["ResultCode"]   = KKSOFTProxy.ResultCodes["FAIL"]
                 self.Callback(jsonPairs: jsonPairs)
-                
+
                 self.hostingController?.dismiss(animated: true, completion: {
                     self.showMenu(session: session, error: "link account error")
                 })
@@ -524,7 +524,7 @@ import TrackingSDK
                 }
             }
         )
-        
+
         // 3) Present it
         let controller = UIHostingController(rootView: AnyView(view))
         controller.overrideUserInterfaceStyle = .light
@@ -533,7 +533,7 @@ import TrackingSDK
         self.hostingController = controller
         self.presentingVC?.present(controller, animated: false, completion: nil)
     }
-    
+
     public func refreshToken(session: AuthSessionResponse?) {
         guard let authManager = authManager else {return}
         authManager.refreshToken()
@@ -545,7 +545,7 @@ import TrackingSDK
                         var jsonPairs = [String : Any]()
                         jsonPairs [ "ResponseCode" ] = KKSOFTProxy.ResponseCodes [ "REFRESH_TOKEN" ]
                         jsonPairs [ "ResultCode" ] = KKSOFTProxy.ResultCodes [ "FAIL" ]
-                        
+
                         if error is AuthErrorResponse {
                             jsonPairs [ "Message" ] = (error as? AuthErrorResponse)?.message
                             jsonPairs [ "Code" ] = (error as? AuthErrorResponse)?.code.id
@@ -561,7 +561,7 @@ import TrackingSDK
             )
             .store(in: &cancellables)
     }
-    
+
     @objc public func getLatestSession() {
         guard let authManager = authManager else {return}
         authManager.getAuthSesssion()
@@ -573,7 +573,7 @@ import TrackingSDK
                         var jsonPairs = [String : Any]()
                         jsonPairs [ "ResponseCode" ] = KKSOFTProxy.ResponseCodes [ "GET_LATEST_SESSION" ]
                         jsonPairs [ "ResultCode" ] = KKSOFTProxy.ResultCodes [ "FAIL" ]
-                        
+
                         if error is AuthErrorResponse {
                             jsonPairs [ "Message" ] = (error as? AuthErrorResponse)?.message
                             jsonPairs [ "Code" ] = (error as? AuthErrorResponse)?.code.id
@@ -589,7 +589,7 @@ import TrackingSDK
             )
             .store(in: &cancellables)
     }
-    
+
     @MainActor
     @objc public func startAutoLinkAccountLoop(timeToRemindInSeconds: Int = 60, guestToken: String,
                                                _ completion: @escaping (NSDictionary?, NSError?) -> Void) {
@@ -611,7 +611,7 @@ import TrackingSDK
                         self.isAutoLinkDialogShowing = true
                         guard let authManager = self.authManager else { return }
                         print("Show Link Account View")
-                        
+
                         var controller: UIHostingController<AnyView>? = nil
                         let view = LinkAccountView(
                             authManager: authManager,
@@ -674,19 +674,19 @@ import TrackingSDK
                 }
             }
     }
-    
+
     @objc public func stopAutoLinkAccountLoop() {
         autoLinkTimer?.invalidate()
         autoLinkTimer = nil
     }
-    
+
     @MainActor private func showMenu(
         session: AuthSessionResponse?,
         error: String? = nil
     ) {
         // Get IDFV from tracking manager
         let idfv = trackingManager?.getIDFV()
-        
+
         let menuView = MenuView(
             accessToken: session?.accessToken,
             refreshToken: session?.refreshToken,
@@ -764,18 +764,18 @@ import TrackingSDK
                         .dismiss(animated: true, completion: {
                             self.showGameTrackingView(session: session)
                         })
-                    
+
                 }
             }
         )
         let controller = UIHostingController(rootView: AnyView(menuView))
         controller.modalPresentationStyle = .overFullScreen
         controller.view.backgroundColor = UIColor(white: 0, alpha: 0.3)
-        
+
         self.hostingController = controller // ✅ store for later dismissal
         self.presentingVC?.present(controller, animated: true, completion: nil)
     }
-    
+
     @MainActor func getRootViewController() -> UIViewController? {
         // Try the key window's root view controller
         if #available(iOS 13.0, *) {
@@ -787,7 +787,7 @@ import TrackingSDK
             return UIApplication.shared.keyWindow?.rootViewController
         }
     }
-    
+
     @MainActor public func showUserBlockedView(data: AuthSessionResponse) {
         let view = UserBlockedView(
             phoneNumber: "+84398686854",
@@ -796,7 +796,7 @@ import TrackingSDK
                 NSLog ( "---- KKSOFT Proxy Auth User Blocked" )
                 let ret = "USER_BLOCKED".toDictionnary()
                 self.Callback ( jsonPairs : ret )
-                
+
                 self.getRootViewController()?.dismiss(animated: true, completion: {
                     self.showMenu(session: nil)}
                 )
@@ -804,7 +804,7 @@ import TrackingSDK
         )
         let ret = data.toDictionnary(responseCode: "USER_BLOCKED")
         self.Callback ( jsonPairs : ret )
-        
+
         let controller = UIHostingController(rootView: AnyView(view))
         controller.overrideUserInterfaceStyle = .light
         controller.modalPresentationStyle = .overFullScreen
@@ -814,7 +814,7 @@ import TrackingSDK
             self.presentingVC?.present(controller, animated: false, completion: nil)
         })
     }
-    
+
     @MainActor @objc public func showTokenExpiration(/*session: AuthSessionResponse*/) {
         let view = TokenExpirationView() {
             DispatchQueue.main.async {
@@ -825,7 +825,7 @@ import TrackingSDK
         }
         //        let ret = session.toDictionnary(responseCode: "TOKEN_EXPIRED")
         //        self.Callback ( jsonPairs : ret )
-        
+
         let controller = UIHostingController(rootView: AnyView(view))
         controller.overrideUserInterfaceStyle = .light
         controller.modalPresentationStyle = .overFullScreen
@@ -835,7 +835,7 @@ import TrackingSDK
             self.presentingVC?.present(controller, animated: false, completion: nil)
         })
     }
-    
+
     /*
     @MainActor @objc public func onRefreshedToken(refreshedToken: AuthSessionOutput) {
         let view = TokenExpirationView() {
@@ -847,7 +847,7 @@ import TrackingSDK
         }
         //        let ret = session.toDictionnary(responseCode: "TOKEN_EXPIRED")
         //        self.Callback ( jsonPairs : ret )
-        
+
         let controller = UIHostingController(rootView: AnyView(view))
         controller.overrideUserInterfaceStyle = .light
         controller.modalPresentationStyle = .overFullScreen
@@ -858,17 +858,17 @@ import TrackingSDK
         })
     }
      */
-    
+
     @MainActor @objc public func showServerMaintaince() {
         let view = ServerMaintenanceView(
             phoneNumber: "+84398686854",
             fanpage: "https://www.facebook.com/profile.php?id=61574162151534"
         ) { _,_ in
-            
+
         }
         //        let ret = session.toDictionnary(responseCode: "TOKEN_EXPIRED")
         //        self.Callback ( jsonPairs : ret )
-        
+
         let controller = UIHostingController(rootView: AnyView(view))
         controller.overrideUserInterfaceStyle = .light
         controller.modalPresentationStyle = .overFullScreen
@@ -878,7 +878,7 @@ import TrackingSDK
             self.presentingVC?.present(controller, animated: false, completion: nil)
         })
     }
-    
+
     @MainActor private func showGameServerView(data: AuthSessionResponse) {
         guard let authManager = authManager else {return}
         let view = GameServerView (
@@ -900,14 +900,14 @@ import TrackingSDK
             self.presentingVC?.present(controller, animated: false, completion: nil)
         })
     }
-    
+
     @MainActor private func showForceUpdateView() {
         var jsonPairs : [ String : Any ]
         jsonPairs = [ : ]
         jsonPairs [ "ResponseCode" ] = KKSOFTProxy.ResponseCodes [ "FORCE_UPDATE" ]
         jsonPairs [ "ResultCode" ] = KKSOFTProxy.ResultCodes [ "SUCCESS" ]
         self.Callback(jsonPairs: jsonPairs)
-        
+
         let forceUpdateView = ForceUpdateView(appStoreId: "123")
         let controller = UIHostingController(rootView: AnyView(forceUpdateView))
         controller.modalPresentationStyle = .overFullScreen
@@ -915,7 +915,7 @@ import TrackingSDK
         controller.view.backgroundColor = UIColor(white: 0, alpha: 0.3)
         self.presentingVC?.present(controller, animated: true, completion: nil)
     }
-    
+
     @MainActor private func showGameTrackingView(session: AuthSessionResponse?) {
         let view = GameTrackingTestView {
             self.hostingController?.dismiss(animated: true, completion: {
@@ -932,7 +932,7 @@ import TrackingSDK
         } onLogOnlineTime: { time, gameUUID, characterId, characterName, level, serverId, serverName in
             IngameEventTracking.trackOnlineTime(time: time, gameUUID: gameUUID, characterId: characterId, characterName: characterName, level: level, serverId: serverId, serverName: serverName)
         }
-        
+
         let controller = UIHostingController(rootView: AnyView(view))
         controller.overrideUserInterfaceStyle = .light
         controller.modalPresentationStyle = .overFullScreen
@@ -941,12 +941,12 @@ import TrackingSDK
             self.presentingVC?.present(controller, animated: false, completion: nil)
         })
     }
-    
+
     // MARK: - TrackingSDK Initialization
-    
+
     @MainActor private func initializeTrackingSDK() {
         NSLog("---- KKSOFT Proxy Initialize TrackingSDK")
-        
+
         // Initialize TrackingSDK with AppFlyers
         let builder = TrackingServiceProvider.Builder()
 //            .enableAppFlyers(
@@ -962,7 +962,12 @@ import TrackingSDK
                 appID: Bundle.main.bundleIdentifier ?? "com.kksoft.vn.ts3.staging",
                 tiktokAppID: Bundle.main.infoDictionary?[ "TiktokAppID" ] as? String ?? ""
             )
-        
+            .enableMeta(
+                appID: Bundle.main.infoDictionary?[ "FacebookAppID" ] as? String ?? "",
+                clientToken: Bundle.main.infoDictionary?[ "FacebookClientToken" ] as? String ?? ""
+            )
+
+
         if Bundle.main.url(forResource: "GoogleService-Info-\(env == .production ? "Production" : "Staging")", withExtension: "plist") != nil {
             let firebaseAppID = Bundle.main.object(forInfoDictionaryKey: "FirebaseAppID") as? String
             _ = builder.enableFirebaseAnalytics(appID: firebaseAppID ?? "")
@@ -971,9 +976,9 @@ import TrackingSDK
         } else {
             NSLog("---- KKSOFT Proxy Firebase Analytics skipped (GoogleService-Info.plist not found)")
         }
-        
+
         let trackingService = builder.build()
-        
+
         self.trackingManager = trackingService.trackingManager
         if let manager = trackingManager {
             AuthTrackingConfigurator.configure(with: manager)
@@ -983,9 +988,9 @@ import TrackingSDK
         // authManager = AuthServiceProvider.Builder().build().authManager
         NSLog("---- KKSOFT Proxy TrackingSDK Initialized")
     }
-    
+
     // MARK: - TrackingSDK Screen Tracking
-    
+
     /// Track a screen view event
     /// - Parameters:
     ///   - screenName: Name of the screen being viewed (e.g., "Logout-Screen", "Login-Screen")
@@ -995,18 +1000,18 @@ import TrackingSDK
             NSLog("---- KKSOFT Proxy trackScreen: TrackingManager not initialized")
             return
         }
-        
+
         NSLog("---- KKSOFT Proxy trackScreen: \(screenName)")
         manager.trackScreen(screenName, parameters: parameters)
     }
-    
+
     /// Track a screen view event with JSON string parameters (for Unity/C interop)
     /// - Parameters:
     ///   - screenName: Name of the screen being viewed
     ///   - jsonParameters: Optional JSON string containing parameters (e.g., "{\"user_type\":\"premium\"}")
     @MainActor @objc public func trackScreen(_ screenName: String, jsonParameters: String?) {
         var parameters: [String: Any]? = nil
-        
+
         if let jsonString = jsonParameters, !jsonString.isEmpty {
             if let jsonData = jsonString.data(using: .utf8),
                let jsonObject = try? JSONSerialization.jsonObject(with: jsonData) as? [String: Any] {
@@ -1015,7 +1020,7 @@ import TrackingSDK
                 NSLog("---- KKSOFT Proxy trackScreen: Failed to parse JSON parameters: \(jsonString)")
             }
         }
-        
+
         trackScreen(screenName, parameters: parameters)
     }
 }

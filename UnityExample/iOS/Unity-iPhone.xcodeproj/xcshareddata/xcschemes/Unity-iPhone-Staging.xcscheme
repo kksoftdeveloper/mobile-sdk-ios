@@ -51,6 +51,9 @@
             ReferencedContainer = "container:Unity-iPhone.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <StoreKitConfigurationFileReference
+         identifier = "../../Classes/K-Utility-Staging.storekit">
+      </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release-Staging"

@@ -22,16 +22,8 @@ struct PackageItemView: View {
         self.isGuestUser = isGuestUser
     }
     
-    private var product: Product { item.product }
-    
     private var pointText: String {
-        if let pointValue = item.points {
-            return "\(pointValue)"
-        }
-        if let first = product.description.split(separator: " ").first {
-            return String(first)
-        }
-        return ""
+        "\(item.points)"
     }
     
     private var alias: String {
@@ -96,7 +88,7 @@ struct PackageItemView: View {
                 Image(sdkAsset: disabled ? "disable_package_price" : "package_price")
                     .resizable()
                     .scaledToFit()
-                Text(product.displayPrice)
+                Text(item.displayPrice)
                     .font(AppFont.dongleRegular.of(size: isLandscapeOnIPhone ? 18 : 22))
                     .foregroundColor(Color.white)
             }
@@ -117,6 +109,9 @@ struct PackageItemView: View {
             if isGuestUser {
                 self.disabled = true
                 self.disableText = LocalizedStringKey.sdkAsset("package_item_guest_disable").toString()
+            } else if !item.isPurchasable {
+                self.disabled = true
+                self.disableText = LocalizedStringKey.sdkAsset("invalid_sku").toString()
             } else {
                 self.disabled = false
             }

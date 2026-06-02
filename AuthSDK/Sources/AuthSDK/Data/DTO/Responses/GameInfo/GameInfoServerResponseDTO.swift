@@ -32,7 +32,7 @@ extension GameInfoServerResponseDTO {
     
     func toModel() -> GameInfoModel {
         return GameInfoModel(
-            gameId: gameId, gameName: gameName, status: toGameStatus()
+            gameId: gameId > 0 ? gameId : 1, gameName: gameName, status: toGameStatus()
         )
     }
 }

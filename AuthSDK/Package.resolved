@@ -188,6 +188,15 @@
         "revision" : "540318ecedd63d883069ae7f1ed811a2df00b6ac",
         "version" : "2.4.0"
       }
+    },
+    {
+      "identity" : "tiktok-business-ios-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tiktok/tiktok-business-ios-sdk.git",
+      "state" : {
+        "revision" : "4d330d4da158190d2c67b2142c2bd36c9eb5291e",
+        "version" : "1.6.1"
+      }
     }
   ],
   "version" : 2

@@ -41,10 +41,14 @@ public final class DefaultGameInfoStorage: GameInfoStorage {
     }
     
     public var gameID: Int? {
-        get { defaults.integer(forKey: Keys.gameID) }
+        get {
+            guard defaults.object(forKey: Keys.gameID) != nil else { return 1 }
+            let gameID = defaults.integer(forKey: Keys.gameID)
+            return gameID > 0 ? gameID : 1
+        }
         set {
             if let newValue = newValue {
-                defaults.set(newValue, forKey: Keys.gameID)
+                defaults.set(newValue > 0 ? newValue : 1, forKey: Keys.gameID)
             } else {
                 defaults.removeObject(forKey: Keys.gameID)
             }
@@ -52,9 +56,16 @@ public final class DefaultGameInfoStorage: GameInfoStorage {
     }
     
     public var serverID: Int? {
-        get { defaults.integer(forKey: Keys.serverID) }
+        get {
+            guard defaults.object(forKey: Keys.serverID) != nil else { return nil }
+            return defaults.integer(forKey: Keys.serverID)
+        }
         set {
-            defaults.set(newValue, forKey: Keys.serverID)
+            if let newValue = newValue {
+                defaults.set(newValue, forKey: Keys.serverID)
+            } else {
+                defaults.removeObject(forKey: Keys.serverID)
+            }
         }
     }
     

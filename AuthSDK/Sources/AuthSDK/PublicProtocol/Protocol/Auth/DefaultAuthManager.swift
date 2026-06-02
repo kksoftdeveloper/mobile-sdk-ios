@@ -369,8 +369,8 @@ public struct DefaultAuthManager: AuthManager, AnalyticsProperties {
     
     public func loginWithGoogleAccount() -> AnyPublisher<AuthSessionResponse, Error> {
         do {
-            let validatedGoogleLoginParameters = try? GoogleLoginParameters.fromSensitiveData()
-            try validatedGoogleLoginParameters?.validate()
+            let validatedGoogleLoginParameters = try GoogleLoginParameters.fromSensitiveData()
+            try validatedGoogleLoginParameters.validate()
             
             guard let manager = self.googleLoginManager else {
                 throw AuthErrorResponse.unknownError()
@@ -398,8 +398,8 @@ public struct DefaultAuthManager: AuthManager, AnalyticsProperties {
     
     public func loginWithFacebookAccount() -> AnyPublisher<AuthSessionResponse, Error> {
         do {
-            let validatedFBLoginParameters = try? FacebookLoginParameters.fromSensitiveData()
-            try validatedFBLoginParameters?.validate()
+            let validatedFBLoginParameters = try FacebookLoginParameters.fromSensitiveData()
+            try validatedFBLoginParameters.validate()
             
             guard let manager = self.facebookLoginManager else {
                 throw AuthErrorResponse.unknownError()
